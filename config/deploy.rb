@@ -1,8 +1,8 @@
 # Change these
 server '18.222.69.48', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@example.com:username/appname.git'
-set :application,     'appname'
+set :repo_url,        'git@github.com:at-quando/ps-Classic-Photo-project.git'
+set :application,     'ps-Classic-Photo-project'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
