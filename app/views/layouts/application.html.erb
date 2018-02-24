@@ -5,10 +5,15 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo-only.png" />
-		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header class="header header--fixed">
+    <% if request.path != '/home'%>
+      <header class="header--fixed">
+    <% else %>
+      <header class="header header--fixed">
+    <% end %>
       <div class="container">
         <div class="header__inner">
           <div class="header__logo"><a href="index.html"><img src="img/logo.png" style="width: 150px;" alt=""/></a></div>
@@ -17,15 +22,17 @@
             <nav class="onepage-nav">
               <!-- onepage-menu -->
               <ul class="onepage-menu">
-                <li class="current-menu-item"><a href="#id-1">Home</a>
+                <li class="current-menu-item"><a href="/home#id-1">Home</a>
                 </li>
-                <li><a href="#id-2">About</a>
+                <li><a href="/home#id-2">About</a>
                 </li>
-                <li><a href="#id-3">Portfolio</a>
+                <li><a href="/home#id-3">Portfolio</a>
                 </li>
-                <li><a href="#id-4">Blog</a>
+                <li><a href="/home#id-4">Blog</a>
                 </li>
-                <li><a href="#id-5">Contact</a>
+                <li><a href="/home#id-5">Contact</a>
+                </li>
+                <li><a href="/prices#id-6">Prices</a>
                 </li>
               </ul><!-- onepage-menu -->
               <div class="navbar-toggle"><span></span><span></span><span></span></div>
@@ -35,6 +42,31 @@
       </div>
     </header><!-- End / header -->
     <%= yield %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <div class="footer">
+        <div id="back-to-top"><i class="pe-7s-angle-up"></i></div>
+        <div class="container">
+          <div class="footer__wrapper">
+            <div class="footer__social">
+              <!-- social-icon -->
+              <a class="social-icon" href="https://www.fb.com/classic.yearbook"><i class="social-icon__icon fa fa-facebook"></i>
+              </a><!-- End / social-icon -->
+              <!-- social-icon -->
+              <a class="social-icon" href="#"><i class="social-icon__icon fa fa-twitter"></i>
+              </a><!-- End / social-icon -->
+              <!-- social-icon -->
+              <a class="social-icon" href="#"><i class="social-icon__icon fa fa-linkedin"></i>
+              </a><!-- End / social-icon -->
+              <!-- social-icon -->
+              <a class="social-icon" href="#"><i class="social-icon__icon fa fa-behance"></i>
+              </a><!-- End / social-icon -->
+              <!-- social-icon -->
+              <a class="social-icon" href="#"><i class="social-icon__icon fa fa-vimeo"></i>
+              </a><!-- End / social-icon -->
+            </div>
+            <p class="footer__copy">2018 &copy; Copyright The Classic Studio. All rights Reserved.</p>
+          </div>
+        </div>
+      </div><!-- End / footer -->
+      <%= javascript_include_tag 'app_extension', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

@@ -13,6 +13,7 @@ gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.12.9'
+gem 'carrierwave', '~> 1.0'
 
 # Plus integrations with:
 gem 'devise'
@@ -20,13 +21,7 @@ gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
 # Use sqlite3 as the database for Active Record
-group :development, :test do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
-end
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

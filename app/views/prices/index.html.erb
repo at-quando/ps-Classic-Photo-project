@@ -1,104 +1,191 @@
-<section class="md-section" id="id-5">
+<section class="md-section price-back" id="id-6">
   <div class="container">
+    <div style="text-align: center;">
+      <h2 class="title__title" >Prices Searching</h2>
+      <div>43 Tong Phuoc Pho St, Hai Chau Dist, Da Nang</div>
+      <div>+84 1223420210</div>
+    </div>
+    <br>
+    <br>
     <div class="row">
-      <div class="col-lg-4 ">
+      <div class="col-lg-4">
         <div class="title">
-          <h2 class="title__title">Get in touch</h2>
+          <h2 class="title__title">Basic Package</h2>
+          <span>Gói chụp cơ bản</span>
         </div><!-- End / title -->
         <div class="mb-40">
           <div class="contact">
-            <h3 class="contact__title">address</h3>
-            <div>43 Tong Phuoc Pho St, Hai Chau Dist, Da Nang</div>
+            <h3 class="contact__title">Number of people (Sĩ số)</h3>
+            <%= select_tag(:num, options_for_select([["35-45",[3000000,2]], ["25-35",[6000000,3]]]), {:include_blank => true}) %>
           </div><!-- End / contact -->
           <div class="contact">
-            <h3 class="contact__title">email</h3>
-            <div><a href="">dhquan1910@gmail.com</a></div>
+            <span><b>Số thợ</b> mặc định cho sĩ số trên là </span><span id="photoText" style="font-size: 15px"></span>
+            <h3 class="contact__title">More photographers? (Thêm thợ)</h3>
+            <%= select_tag(:photos, options_for_select([["2",123], ["3",3]] ), {:include_blank => true}) %>
           </div><!-- End / contact -->
           <div class="contact">
-            <h3 class="contact__title">phone</h3>
-            <div>+84 1223420210</div>
+            <h3 class="contact__title">Basic Price (Giá cơ bản)</h3>
+            <span id="basicMoney" style="font-size: 20px"></span> VND
           </div><!-- End / contact -->
         </div>
       </div>
-      <div class="col-lg-7 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-1 ">
+      <div class="col-lg-4 ">
         <div class="title">
-          <h2 class="title__title">Or drop a message</h2>
+          <h2 class="title__title">Extend</h2>
+          <span>Mở rộng gói chụp</span>
         </div><!-- End / title -->
-        <div class="form-wrapper">
-          <!-- form-item -->
-          <div class="form-item form-item--half">
-            <label class="form__label">email,<span>*</span>
-            </label>
-            <input class="form-control" type="text" name="input" placeholder=""/>
-          </div><!-- End / form-item -->
-          <div class="form-item form-item--half">
-            <label class="form__label">Name,<span>*</span>
-            </label>
-            <input class="form-control" type="text" name="input" placeholder=""/>
-          </div><!-- End / form-item -->
-          <div class="form-item">
-            <label class="form__label">message<span>*</span>
-            </label>
-            <textarea class="form-control"></textarea>
-          </div><!-- End / form-item -->
-          <div class="form-item">
-            <a class="md-btn btn-custom" href="#">Send message
-            </a>
-          </div><!-- End / form-item -->
-        </div>
+        <div class="mb-40">
+            <h4>Night</h4>
+            <div class="service mb-0">
+                <%= check_box_tag(:night, value = @extend_price[:night].to_json, checked = false, class: 'check_change') %>
+              <div class="service__icon">
+                <div class="service__icon"><i class="pe-7s-anchor"></i></div>
+              </div>
+                <h3 class="service__title">Night Shooting (Gói chụp đêm)</h3>
+                <p class="service__text">Duis porttitor libero ac egestas euismod. Maecenas quis felis turpis. Nulla quis</p>
+            </div>
+            <h4>Video</h4>
+            <div class="service mb-0">
+                <%= check_box_tag(:video_1, @extend_price[:cfs].to_json, checked = false, class: 'check_change') %>
+              <div class="service__icon">
+                <div class="service__icon"><i class="pe-7s-anchor"></i></div>
+              </div>
+                <h3 class="service__title"> Confession Video</h3>
+                <p class="service__text">là video lưu lại toàn bộ nội dung của buổi trò chuyện từ các thành viên trong lớp như một chương trình trực tiếp. </p>
+            </div>
+            <div class="service mb-0">
+                <%= check_box_tag(:video_2, value = @extend_price[:hl].to_json, checked = false, class: 'check_change') %>
+              <div class="service__icon">
+                <div class="service__icon"><i class="pe-7s-anchor"></i></div>
+              </div>
+                <h3 class="service__title">Highlight Video</h3>
+                <p class="service__text">là video nắm bắt những khoảnh khắc, cảm xúc trong ngày chụp. Được xây dựng như dạng MV.</p>
+            </div>
+            <div class="service mb-0">
+                <%= check_box_tag(:video_3, value = @extend_price[:story].to_json, checked = false, class: 'check_change') %>
+              <div class="service__icon">
+                <div class="service__icon"><i class="pe-7s-anchor"></i></div>
+              </div>
+                <h3 class="service__title">Story Video</h3>
+                <p class="service__text">là video có kịch bản với những tình huống gây cười và các thành viên trong lớp là người diễn xuất.</p>
+            </div>
+            <div class="contact">
+                <h3 class="contact__title">Extend Price (Giá mở rộng)</h3>
+                <span id="extendMoney" style="font-size: 20px"></span> VND
+              </div><!-- End / contact -->
+          </div>
       </div>
-    </div>
-  </div>
-</section>
-<section class="md-section" id="id-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 ">
+      <div class="col-lg-4">
           <div class="title">
-            <h2 class="title__title">Get in touch</h2>
+            <h2 class="title__title">Summary</h2>
+            <span>Tổng kết</span>
           </div><!-- End / title -->
           <div class="mb-40">
             <div class="contact">
-              <h3 class="contact__title">address</h3>
-              <div>43 Tong Phuoc Pho St, Hai Chau Dist, Da Nang</div>
+              <h3 class="contact__title">Number of people (Sĩ số)</h3>
+              <div id="range_pp"></div>
             </div><!-- End / contact -->
             <div class="contact">
-              <h3 class="contact__title">email</h3>
-              <div><a href="">dhquan1910@gmail.com</a></div>
+              <h3 class="contact__title">Extend (mở rộng)</h3>
+              <div id="extend-list"> 
+              </div>
             </div><!-- End / contact -->
             <div class="contact">
-              <h3 class="contact__title">phone</h3>
-              <div>+84 1223420210</div>
+              <h3 class="contact__title">Tổng giá</h3>
+              <span id="totalMoney" style="font-size: 20px"></span>VND
             </div><!-- End / contact -->
           </div>
         </div>
-        <div class="col-lg-7 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-1 ">
-          <div class="title">
-            <h2 class="title__title">Or drop a message</h2>
-          </div><!-- End / title -->
-          <div class="form-wrapper">
-            <!-- form-item -->
-            <div class="form-item form-item--half">
-              <label class="form__label">email,<span>*</span>
-              </label>
-              <input class="form-control" type="text" name="input" placeholder=""/>
-            </div><!-- End / form-item -->
-            <div class="form-item form-item--half">
-              <label class="form__label">Name,<span>*</span>
-              </label>
-              <input class="form-control" type="text" name="input" placeholder=""/>
-            </div><!-- End / form-item -->
-            <div class="form-item">
-              <label class="form__label">message<span>*</span>
-              </label>
-              <textarea class="form-control"></textarea>
-            </div><!-- End / form-item -->
-            <div class="form-item">
-              <a class="md-btn btn-custom" href="#">Send message
-              </a>
-            </div><!-- End / form-item -->
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+    <hr>
+    <h2 class="title__title" style="text-align: center; padding-bottom: 20px;">Benefits</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="contact">
+          <h3 class="contact__title">Lợi ích cho gói chụp cơ bản</h3>
+          <p>★ Thời gian chụp từ <b>8h - 17h</b></p>
+          <p>★ Không giới hạn ảnh chụp.</p>
+          <p>★ Không giới hạn địa điểm chụp.</p>
+          <p>★ Edit photoshop 100% ảnh gốc.</p>
+          <p>★ Design ảnh bìa và lên layout.</p>
+          <p>★ Ekip nhiệt tình và thường xuyên cập nhật xu hướng mới.</p>
+          <p>★ Khâu chuẩn bị và lên KỊCH BẢN chuyên nghiệp giữa 2 bên.</p>
+          <p>★ Được hỗ trợ giá từ các tiệm thuê đồ trên toàn Đà Nẵng.</p>
+          <p>★ Mỗi bộ ảnh, chúng tôi đều nắm bắt những KHOẢNH KHẮC nhỏ nhất.</p>
+        </div><!-- End / contact -->
+      </div>
+      <div class="col-lg-4">
+        <div class="contact">
+          <h3 class="contact__title">Lợi ích mở rộng gói chụp</h3>
+          <h5>- Gói chụp đêm</h5>
+          <p>★ Thời gian chụp từ <b>18h - 20h30</b></p>
+          <p>★ Team sẽ <b>chuẩn bị máy nổ</b> (ở những nơi ko có điện).</p>
+          <p>★ Team sẽ <b>chuẩn bị đèn dây tóc trang trí</b>.</p>
+          <p>★ Team có rất nhiều <b>kinh nghiệm trong việc hỗ trợ setup khung cảnh.</b></p>
+          <p>★ Team có thể <b>kiểm soát ánh sáng nhân tạo.</b></p>
+          <h5>- Gói chụp phát sinh thêm ngày hoặc khung giờ không thuộc 8h-20h30</h5>
+          <p>★ Liên hệ để biết thêm chi tiết</p>
+        </div><!-- End / contact -->
+      </div>
+      <div class="col-lg-4">
+          <div class="contact">
+            <h3 class="contact__title">Lợi ích cho gói video</h3>
+            <h5>- Tất cả gói video đều:</h5>
+            <p>★ <b>Giao toàn bộ source gốc</b></p>
+            <p>★ Quay xuyên suốt trong quá trình chụp.</p>
+            <p>★ Đảm bảo <b>màu sắc cinematic.</b></p>
+            <br>
+            <h5>- Confession Video </h5>
+            là video lưu lại toàn bộ nội dung của buổi trò chuyện từ các thành viên trong lớp như một chương trình trực tiếp.
+            <br>
+            <br><h5>- Highlight Video </h5>
+            là video nắm bắt những khoảnh khắc, cảm xúc trong ngày chụp. Được xây dựng như dạng MV.
+            <p>★ Độ dài từ <b>3-5 phút.</b></p>
+            <br>
+            <h5>- Story Video</h5>
+            là video có kịch bản với những tình huống gây cười và các thành viên trong lớp là người diễn xuất.
+            <p>★ Độ dài từ <b>7-10 phút.</b></p>
+          </div><!-- End / contact -->
+        </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+  var basicMoney = 0;
+  var extendMoney = 0;
+  var range_pp = '';
+  var num_pg = 0;
+  $(document).ready(function(){
+    $('#num').change(function(e){
+      const a = JSON.parse(e.target.value);
+      basicMoney = parseInt(a[0]);
+      range_pp = e.target.options[e.target.selectedIndex].text;
+      num_pg = a[1];
+      totalMoney = extendMoney + basicMoney;
+      $('#basicMoney').html(basicMoney);
+      $('#range_pp').html(range_pp);
+      $('#totalMoney').html(totalMoney);
+      $('#photoText').html(num_pg);
+    });
+    const a = <%= @extend_price.to_json.to_s.html_safe%>;
+    $(".check_change").change(function(e){
+      if($(this).is(':checked') ) {
+        const value = JSON.parse(e.target.value);
+        extendMoney += parseInt(value.price);
+        totalMoney = extendMoney + basicMoney;
+        $('#extendMoney').html(extendMoney);
+        $('#totalMoney').html(totalMoney);
+        $('#extend-list').append('<p class="tick">★ ' + value.name + '</p>');
+      }
+      else {
+        const value = JSON.parse(e.target.value);
+        extendMoney -= parseInt(value.price); 
+        totalMoney = extendMoney + basicMoney;
+        $('#extendMoney').html(extendMoney);
+        $('#totalMoney').html(totalMoney);
+        console.log($('#extend-list').text());
+        $('.tick').remove(`:contains(${value.name})`);
+      }
+    });
+  });
+</script>
