@@ -15,7 +15,6 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -149,6 +148,7 @@ Devise.setup do |config|
 
   # Invalidates all the remember me tokens when the user signs out.
   config.expire_all_remember_me_on_sign_out = true
+  config.secret_key = '9427e3a8b7140c5f4610721493c2c1024f1032fcdb8ec29f0c8305850714553665b35455213c554415d2b83f687347ea35444650d8bf29fecdc49f20b9e6bea3'
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false

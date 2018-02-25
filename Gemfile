@@ -8,7 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
-gem 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'font-awesome-rails'
 gem 'jquery-rails'

@@ -61,5 +61,5 @@
 set :stage, :production
 set :rails_env, :production
 set :deploy_to, "/deploy/apps/classic_photo"
-set :branch, :config_deploy
+set :branch,  :master
 server "18.222.69.48", user: "deploy", roles: %w(web app db)
