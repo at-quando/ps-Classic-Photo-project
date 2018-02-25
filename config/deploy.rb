@@ -6,6 +6,7 @@ set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
 set :keep_releases, 5
 set :rvm_type, :user
 
+
 set :rvm_ruby_version, 'ruby-2.4.0'
 
 set :puma_rackup, -> {File.join(current_path, "config.ru")}
@@ -22,3 +23,4 @@ set :puma_workers, 0
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
+set :puma_restart_command, 'bundle exec puma'
