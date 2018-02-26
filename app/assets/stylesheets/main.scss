@@ -2616,3 +2616,11 @@ ul {
 .service {
     padding-bottom: 1rem;
 }
+
+.mfp-close {
+    border: 0 !important;
+    &:focus {outline:0;}
+    &:hover {
+        background: none !important;
+    }
+}

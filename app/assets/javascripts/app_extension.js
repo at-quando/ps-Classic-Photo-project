@@ -9,6 +9,5 @@
 //= require vendors/masonry-layout/masonry.pkgd.js
 //= require vendors/swiper/swiper.jquery.js
 //= require vendors/menu/menu.js
-//= require vendors/typed/typed.min.js
 //= require ./js/main.js
 //= require_tree .
