@@ -1,4 +1,3 @@
-//= require bootstrap-sprockets
 //= require vendors/jquery/jquery.min.js
 //= require vendors/imagesloaded/imagesloaded.pkgd.js
 //= require vendors/isotope-layout/isotope.pkgd.js
