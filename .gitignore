@@ -9,7 +9,6 @@
 
 # Other
 config/database.yml
-public/*
 .env
 coverage/
 .rspec
