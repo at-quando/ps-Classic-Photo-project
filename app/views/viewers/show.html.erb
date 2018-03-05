@@ -1,11 +1,21 @@
 <section class="md-section photo-section" id="id-7">
   <div class="container">
-    <div style="text-align: center">
+    <div class="info-view">
       <h2>Picture</h2>
       <h3 style="text-transform: uppercase"><%=@view.name_class%> - <%=@view.school%></h3>
       <p style="text-transform: uppercase"><%=@view.school_year%></p>
+      <% @link.each_index do |index| %>
+        <% count = index + 1 %>
+        <% if index + 1 == @page.to_i %>
+          <%= link_to index + 1, viewer_path(@view.name_class, :page => count), class: 'paginate active-pag' %>
+        <% else %>
+          <%= link_to index + 1, viewer_path(@view.name_class, :page => count), class: 'paginate' %>
+        <% end %>
+      <% end %>
     </div>
-    <iframe id="filecontainer" src="<%=@view.drive_link%>" style="width:100%; height:600px; border:0;"></iframe>
+    <% id = @page.to_i - 1 %>
+    <% reverse_link = 'https://drive.google.com/embeddedfolderview?id=' + @link[id]+ '#grid'%>
+      <iframe id="filecontainer" src="<%= reverse_link %>" style="width:100%; height:600px; border:0;"></iframe>
   </div>
 </section>
 <script>
