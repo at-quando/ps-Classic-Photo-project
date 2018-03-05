@@ -1,0 +1,22 @@
+<section class="md-section photo-section" id="id-7">
+  <div class="container">
+    <div style="text-align: center">
+      <h2>Picture</h2>
+      <h3 style="text-transform: uppercase"><%=@view.name_class%> - <%=@view.school%></h3>
+      <p style="text-transform: uppercase"><%=@view.school_year%></p>
+    </div>
+    <iframe id="filecontainer" src="<%=@view.drive_link%>" style="width:100%; height:600px; border:0;"></iframe>
+  </div>
+</section>
+<script>
+  $(document).ready(function(){
+    $("#filecontainer").on("load", function () {
+      var iframe = $('#filecontainer').contents();
+      console.log(iframe.find(".flip-entry"));
+      iframe.find(".flip-entry")[0].click(function(){
+      alert("test");
+      console.log(12);
+    });
+    })
+  });
+</script>

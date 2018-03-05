@@ -2603,6 +2603,7 @@ ul {
 } 
 .price-back {
     background: url(/img/port02.jpg) no-repeat center center fixed;
+    min-height: 40vw;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -2623,4 +2624,8 @@ ul {
     &:hover {
         background: none !important;
     }
+}
+.btn-submit {
+    margin-top: 1rem;
+    color: white !important;
 }
