@@ -76,5 +76,51 @@
         </div>
       </div><!-- End / footer -->
       <%= javascript_include_tag 'app_extension' %>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '947739745402761',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v2.12'
+          });
+        };
+        (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    (function($) {
+      var fbRoot;
+      function saveFacebookRoot() {
+        if ($('#fb-root').length) {
+          fbRoot = $('#fb-root').detach();
+        }
+      };
+      function restoreFacebookRoot() {
+        if (fbRoot != null) {
+          if ($('#fb-root').length) {
+            $('#fb-root').replaceWith(fbRoot);
+          } else {
+            $('body').append(fbRoot);
+          }
+        }
+        if (typeof FB !== "undefined" && FB !== null) { // Instance of FacebookSDK
+          FB.XFBML.parse();
+        }
+      };
+      document.addEventListener('turbolinks:request-start', saveFacebookRoot)
+      document.addEventListener('turbolinks:load', restoreFacebookRoot)
+    }(jQuery));
+    </script>
+    <div class="fb-customerchat"
+      page_id="229243217276569"
+      theme_color="#6699cc"
+      logged_in_greeting="Xin chào! The Classic Studio có thể giúp gì bạn không ạ?"
+      logged_out_greeting="Xin chào! The Classic Studio có thể giúp gì bạn không ạ?"
+    >
+    </div>
   </body>
 </html>
