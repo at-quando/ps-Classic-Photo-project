@@ -1,23 +1,14 @@
 class PricesController < ApplicationController
   def index
     @money = 1234
-    @extend_price = {
-      "night": {
-        "name": "Night shooting",
-        "price": 1000
-      },
-      "cfs": {
-        "name": "Confession Video",
-        "price": 2000
-      },
-      "hl": {
-        "name": "Highlight Video",
-        "price": 3000
-      },
-      "story": {
-        "name": "Story Video",
-        "price": 4000
+    @basic_package = Price.all.map{|x| [x.num_pp,[x.price,x.num_pg]]}
+    @extend_price = {:item1 => 1}
+    Package.all.each do |package|
+      key = package.key
+      @extend_price[key] = {
+        name: package.name,
+        price: package.price
       }
-    }
+    end
   end
 end

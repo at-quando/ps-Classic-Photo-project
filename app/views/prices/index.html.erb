@@ -16,7 +16,7 @@
         <div class="mb-40">
           <div class="contact">
             <h3 class="contact__title">Number of people (Sĩ số)</h3>
-            <%= select_tag(:num, options_for_select([["35-45",[3000000,2]], ["25-35",[6000000,3]]]), {:include_blank => true}) %>
+            <%= select_tag(:num, options_for_select(@basic_package), {:include_blank => true}) %>
           </div><!-- End / contact -->
           <div class="contact">
             <span><b>Số thợ</b> mặc định cho sĩ số trên là </span><span id="photoText" style="font-size: 15px"></span>
@@ -37,7 +37,7 @@
         <div class="mb-40">
             <h4>Night</h4>
             <div class="service mb-0">
-                <%= check_box_tag(:night, value = @extend_price[:night].to_json, checked = false, class: 'check_change') %>
+                <%= check_box_tag(:night, value = @extend_price["night"].to_json, checked = false, class: 'check_change') %>
               <div class="service__icon">
                 <div class="service__icon"><i class="pe-7s-anchor"></i></div>
               </div>
@@ -46,7 +46,7 @@
             </div>
             <h4>Video</h4>
             <div class="service mb-0">
-                <%= check_box_tag(:video_1, @extend_price[:cfs].to_json, checked = false, class: 'check_change') %>
+                <%= check_box_tag(:video_1, @extend_price["cfs"].to_json, checked = false, class: 'check_change') %>
               <div class="service__icon">
                 <div class="service__icon"><i class="pe-7s-anchor"></i></div>
               </div>
@@ -54,7 +54,7 @@
                 <p class="service__text">là video lưu lại toàn bộ nội dung của buổi trò chuyện từ các thành viên trong lớp như một chương trình trực tiếp. </p>
             </div>
             <div class="service mb-0">
-                <%= check_box_tag(:video_2, value = @extend_price[:hl].to_json, checked = false, class: 'check_change') %>
+                <%= check_box_tag(:video_2, value = @extend_price["hl"].to_json, checked = false, class: 'check_change') %>
               <div class="service__icon">
                 <div class="service__icon"><i class="pe-7s-anchor"></i></div>
               </div>
@@ -62,7 +62,7 @@
                 <p class="service__text">là video nắm bắt những khoảnh khắc, cảm xúc trong ngày chụp. Được xây dựng như dạng MV.</p>
             </div>
             <div class="service mb-0">
-                <%= check_box_tag(:video_3, value = @extend_price[:story].to_json, checked = false, class: 'check_change') %>
+                <%= check_box_tag(:video_3, value = @extend_price["story"].to_json, checked = false, class: 'check_change') %>
               <div class="service__icon">
                 <div class="service__icon"><i class="pe-7s-anchor"></i></div>
               </div>
