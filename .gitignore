@@ -12,7 +12,7 @@ config/database.yml
 .env
 coverage/
 .rspec
-
+public/uploads
 config/settings.local.yml
 
 config/settings.local.yml
