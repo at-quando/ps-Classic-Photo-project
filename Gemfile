@@ -22,7 +22,7 @@ gem 'devise'
 gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
-gem 'activeadmin_froala_editor'
+gem 'activeadmin_quill_editor'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
