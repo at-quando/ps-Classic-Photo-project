@@ -2592,15 +2592,7 @@ ul {
 .social-icon__icon {
     font-size: 20px !important;
 }
-.row {
-    &:before {
-        content: none;
-    }
 
-    &:after {
-        content: '';
-    }
-} 
 .price-back {
     background: url(/img/port02.jpg) no-repeat center center fixed;
     min-height: 40vw;
@@ -2647,4 +2639,22 @@ ul {
 }
 .margin-fix {
     padding-bottom: 2rem;
+}
+.row {
+    &:before {
+        content: none;
+    }
+
+    &:after {
+        content: '' !important;
+    }
+} 
+.details {
+    // .portfolio__bg {
+    //     height: 200px;
+    //     width: 200px;
+    // }
+    // .grid__inner {
+    //     height: 250px !important;
+    // }
 }

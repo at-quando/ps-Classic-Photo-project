@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305150541) do
+ActiveRecord::Schema.define(version: 20180314022914) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -41,12 +41,80 @@ ActiveRecord::Schema.define(version: 20180305150541) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "content"
+    t.text "description"
+    t.integer "kind", default: 0
+    t.string "title"
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contract_photographers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "photographer_id"
+    t.bigint "contract_id"
+    t.float "salary", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_id"], name: "index_contract_photographers_on_contract_id"
+    t.index ["photographer_id"], name: "index_contract_photographers_on_photographer_id"
+  end
+
+  create_table "contract_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "quater"
+    t.string "costume"
+    t.string "place"
+    t.string "prepare"
+    t.bigint "contract_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_id"], name: "index_contract_plans_on_contract_id"
+  end
+
+  create_table "contracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "school"
+    t.string "school_year"
+    t.string "address"
+    t.string "town"
+    t.string "group"
+    t.date "taken_date"
+    t.integer "num_pp"
+    t.bigint "price_id"
+    t.string "package"
+    t.float "deposit", limit: 24
+    t.string "prepare"
+    t.string "gift"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_id"], name: "index_contracts_on_price_id"
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_images_on_article_id"
+  end
+
   create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "phone"
     t.string "address"
     t.string "name"
     t.string "email"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "email"
+    t.string "name"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +137,7 @@ ActiveRecord::Schema.define(version: 20180305150541) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "favorite"
   end
 
   create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -86,15 +155,22 @@ ActiveRecord::Schema.define(version: 20180305150541) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "video"
+    t.integer "kind", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "viewers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name_class"
-    t.string "school"
-    t.string "school_year"
     t.string "email"
     t.string "pwd"
     t.string "drive_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "contract_id"
+    t.index ["contract_id"], name: "index_viewers_on_contract_id"
   end
 
+  add_foreign_key "viewers", "contracts"
 end

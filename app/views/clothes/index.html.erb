@@ -1,0 +1,30 @@
+<section class="md-section price-back" id="id-8">
+  <div class="row" style="padding: 0 2rem">
+    <div class="container col-md-9">
+      <h3 style="text-align: center;">Trang Phục <br> Costume</h3>
+      <hr>
+      <div class="row" style="padding: 2rem">
+        <% @articles.each do |article| %>
+          <div class="col-lg-4">
+            <div>
+              <% if article.images[0]%>
+                <div class="post__media"><a href="<%= clothe_path(article)%>"><img src="<%=article.images[0].name %>" alt="costume"/></a></div>
+              <% end %>
+              <div class="post__body">
+                <a href="<%= clothe_path(article) %>">
+                  <h2 class="post__title"><%=article.title %></h2>
+                </a>
+                <div class="fb-like" data-href="<%= clothe_path(article)%>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                <div class="post__meta"><span class="author"><a href="#"><%=article.key %></a></span><span class="date"><%=article.created_at.strftime('%d/%m/%y') %></span></div>
+                <p class="post__text"><%=article.description[0..200] %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="fb-page" data-href="https://www.facebook.com/classic.yearbook/" data-height="700" data-tabs="timeline,events" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/classic.yearbook/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/classic.yearbook/">The Classic Studio - Kỷ yếu số 1 Đà Thành</a></blockquote></div>
+    </div>
+  </div>
+</section>

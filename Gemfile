@@ -15,12 +15,14 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.12.9'
 gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 # Plus integrations with:
 gem 'devise'
 gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
+gem 'activeadmin_froala_editor'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server

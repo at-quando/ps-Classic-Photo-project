@@ -11,14 +11,14 @@ class ViewersController < ApplicationController
   end
 
   def show
-    @view = Viewer.find_by(name_class: params[:id].downcase)
+    @view = Contract.find_by(code: params[:id].downcase)
     if params[:page]
       @page = params[:page]
     else 
       @page = 1
     end
     if @view
-      @link = @view.drive_link.split(',')
+      @link = @view.viewers[0].drive_link.split(',')
     else
       redirect_to viewers_path
       flash[:alert] = 'Maybe your photos are not completed or invalid!'

@@ -1,5 +1,5 @@
 ActiveAdmin.register Photographer do
-  permit_params :avatar, :name, :date_join, :role, :description, :phone, :address
+  permit_params :avatar, :name, :date_join, :role, :description, :phone, :address, :favorite
 
   index do
     selectable_column
@@ -11,6 +11,9 @@ ActiveAdmin.register Photographer do
     column :description
     column :phone
     column :address
+    column(:favorite) do |check| 
+      check.favorite? ? status_tag( "yes", :ok ) : status_tag( "no" )
+    end
     actions
   end
 
@@ -25,6 +28,7 @@ ActiveAdmin.register Photographer do
       f.input :description
       f.input :phone
       f.input :address
+      f.input :favorite
     end
     f.actions
   end

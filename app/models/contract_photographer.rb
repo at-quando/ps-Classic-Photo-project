@@ -1,0 +1,2 @@
+class ContractPhotographer < ApplicationRecord
+end
