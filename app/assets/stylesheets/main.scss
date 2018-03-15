@@ -2658,3 +2658,29 @@ ul {
     //     height: 250px !important;
     // }
 }
+
+.center-head {
+    text-align: center;
+}
+.photo-item {
+    display: inline-block;
+    padding: 0 1rem;
+}
+.contract {
+    h3 {
+        text-transform: uppercase;
+        padding: 1rem 0;
+        text-decoration: underline;
+    }
+    label, b {
+        font-size: 1.4rem;
+    }
+    label {
+        padding-right: 1rem;
+    }
+    .ava {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+}
