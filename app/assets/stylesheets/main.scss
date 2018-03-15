@@ -2672,7 +2672,7 @@ ul {
         padding: 1rem 0;
         text-decoration: underline;
     }
-    label, b {
+    label, b, table{
         font-size: 1.4rem;
     }
     label {
@@ -2682,5 +2682,8 @@ ul {
         width: 100px;
         height: 100px;
         object-fit: cover;
+    }
+    table,tr,td {
+        border: 1px black solid;
     }
 }
