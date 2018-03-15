@@ -5,7 +5,9 @@
         <h2>HOÁ ĐƠN ĐIỆN TỬ</h2>
         <h5>eBillings</h5>
         <div class="header__logo"><a href="/home"><img src="/img/logo.png" style="width: 150px;" alt=""/></a></div>
-        <h5>Mã code hoá đơn:  <b style="text-transform: uppercase"> <%= @contract.code %></b></h5>
+        <% if @contract.code === @code %>
+          <h5>Mã code hoá đơn:  <b style="text-transform: uppercase"> <%= @contract.code %></b></h5>
+        <% end %>
       </div>
       <hr>
       <div class="row">
@@ -30,17 +32,19 @@
           <div style="padding-left: 3rem;">
             <h3 class="center-head">Nội dung hợp đồng</h3>
             <label>Ngày chụp: </label><b><%= @contract.taken_date %></b><br>
-            <label>Gói chụp cơ bản: </label><b> <%= @contract.price.price %> VND cho sĩ số <%= @contract.price.num_pp %></b><br>
-            <label>Gói mở rộng: </label><br>
-            <% total = @contract.price.price %>
-            <% @package.each do |pack|%>
-              + <b><%= pack.name %> - <%= pack.price%></b><br>
-              <% total = @contract.price.price + pack.price %>
-            <% end %>
             <label>Quà tặng: </label><b><%= @contract.gift %></b><br>
-            <label>Tổng tiền: </label><b><%= total %></b><br>
-            <label>Đã đặt cọc: </label><b><%= @contract.deposit %></b><br>
-            <label>Còn lại: </label><b><%= total - @contract.deposit %></b><br>
+            <% if @contract.code === @code %>
+              <label>Gói chụp cơ bản: </label><b> <%= @contract.price.price %> VND cho sĩ số <%= @contract.price.num_pp %></b><br>
+              <label>Gói mở rộng: </label><br>
+              <% total = @contract.price.price %>
+              <% @package.each do |pack|%>
+                + <b><%= pack.name %> - <%= pack.price%></b><br>
+                <% total = @contract.price.price + pack.price %>
+              <% end %>
+              <label>Tổng tiền: </label><b><%= total %></b><br>
+              <label>Đã đặt cọc: </label><b><%= @contract.deposit %></b><br>
+              <label>Còn lại: </label><b><%= total - @contract.deposit %></b><br>
+            <% end %>
          </div>
         </div>
         <div class="col-md-6 center-head">

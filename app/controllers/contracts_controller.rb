@@ -8,5 +8,11 @@ class ContractsController < ApplicationController
       @package.push(pack) if pack 
     end
     @ctr_photo = ContractPhotographer.where(contract_id: params[:id])
+    uri   = URI.parse(request.fullpath)
+    @code = ''
+    if uri.query
+      params = CGI.parse(uri.query)
+      @code  = params['code'].first
+    end
   end
 end
