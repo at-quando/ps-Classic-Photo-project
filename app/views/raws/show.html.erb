@@ -1,11 +1,12 @@
 <script>
   var file_text = localStorage.getItem("FILE") || '';
 </script>
+<%= javascript_include_tag 'raws.js' %>
 <section id="raws" class="md-section details">
   <div class="row" style="padding: 0 2rem">
     <div class="container">
       <div class="col-sm-12">
-        <div class="grid-css grid-css--grid" data-col-lg="6" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
+        <div class="grid-css grid-css--grid" data-col-lg="6" data-col-md="6" data-col-sm="6" data-col-xs="1" data-gap="30">
           <div class="grid__inner">
             <div class="grid-sizer"></div>
             <% @images.each do |img| %>

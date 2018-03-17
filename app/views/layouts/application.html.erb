@@ -11,7 +11,7 @@
   </head>
   <body>
     <% if request.path != '/home'%>
-      <header class="header--fixed margin-fix">
+      <header class="header--fixed header" style="top :0">
     <% else %>
       <header class="header header--fixed">
     <% end %>
@@ -124,4 +124,5 @@
     >
     </div>
   </body>
+  <%= javascript_include_tag 'app_extension' %>
 </html>
