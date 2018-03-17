@@ -60,5 +60,5 @@
 #   }
 set :stage, :production
 set :rails_env, :production
-set :branch,  :master
+set :branch,  :feature/old_version
 server "18.218.74.37", user: "deploy", roles: %w(web app db)
