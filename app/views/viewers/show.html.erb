@@ -19,14 +19,15 @@
   </div>
 </section>
 <script>
+ 
   $(document).ready(function(){
-    $("#filecontainer").on("load", function () {
-      var iframe = $('#filecontainer').contents();
-      console.log(iframe.find(".flip-entry"));
-      iframe.find(".flip-entry")[0].click(function(){
-      alert("test");
-      console.log(12);
+    focus();
+    var listener = window.addEventListener('blur', function() {
+      console.log(122332);
+      if (document.activeElement === document.getElementById('filecontainer')) {
+        console.log(12);
+      }
+      window.removeEventListener('blur', listener);
     });
-    })
   });
 </script>

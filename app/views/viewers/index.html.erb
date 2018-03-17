@@ -1,19 +1,46 @@
-<section class="md-section price-back" id="id-7">
-  <div class="container">
-    <div style="text-align: center">
-      <h2>Hello there, you are in the automatic classic's viewer </h2>
-      <h3>Type your class name to find your album</h3>
-      <p>[school]-[class] Ex: PCT-12AB15</p>
-      <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
-          <div class="input-group">
-            <%= form_tag(viewers_path, method: :post) do %>
-              <input type="text" name="code">
-              <%= submit_tag "Submit", class: 'btn btn-primary btn-submit' %>
-            <% end %>
-          </div>
-        </div>
-      <div>
-    </div>
-  </div>
-</section>
+<!-- Intro -->
+<div style="overflow:hidden">
+  <section id="intro" class="main style1 dark fullscreen">
+      <div class="content">
+        <header>
+          <h2>Xin chào!</h2>
+        </header>
+        <p>Chào mừng bạn đến với <strong>kho hình ảnh</strong> của chúng tôi. <br>Với mã code được cấp, bạn có thể truy cập ẢNH PHOTOSHOP hoặc ẢNH GỐC trong hệ thống.
+          <br>Bạn cũng có thể trải nghiệm chức năng lựa ảnh online với <strong>RAW FILTER </strong>.
+        <footer>
+          <a href="#one" class="button style2 down">More</a>
+        </footer>
+      </div>
+    </section>
+  <!-- One -->
+    <section id="one" class="main style2 right dark fullscreen">
+      <div class="content box style2">
+        <header>
+          <h2>Photoshop albums?</h2>
+        </header>
+        <p>Nếu tìm kiếm album ảnh đã chỉnh sửa thì hãy nhập mã code vào ô bên dưới và submit để kiểm tra nhé.</p>
+        <%= form_tag(viewers_path, method: :post) do %>
+          <input type="text" name="code">
+          <%= submit_tag "Submit", class: 'btn btn-primary btn-submit' %>
+        <% end %>
+      </div>
+      <a href="#two" class="button style2 down anchored">Next</a>
+    </section>
+  <!-- Two -->
+    <section id="two" class="main style2 left dark fullscreen">
+      <div class="content box style2">
+        <header>
+          <h2>RAW FILTER?</h2>
+        </header>
+        <p>Đây là hệ thống lọc hình ảnh gốc, những hình bạn chọn sẽ được chúng tôi edit, bạn cũng có thể xem và download hình.</p>
+        <%= form_tag(raws_path, method: :post) do %>
+          <input type="text" name="code">
+          <%= submit_tag "Submit", class: 'btn btn-primary btn-submit' %>
+        <% end %>
+      </div>
+    </section>
+  </div>  
+  <!-- Work -->
+  <%= javascript_include_tag 'raws.js' %>
+  
+  

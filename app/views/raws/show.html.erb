@@ -1,0 +1,91 @@
+<script>
+  var file_text = localStorage.getItem("FILE") || '';
+</script>
+<section id="raws" class="md-section details">
+  <div class="row" style="padding: 0 2rem">
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="grid-css grid-css--grid" data-col-lg="6" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
+          <div class="grid__inner">
+            <div class="grid-sizer"></div>
+            <% @images.each do |img| %>
+              <div class="grid-item normal">
+                <div class="grid-item__inner">  
+                  <div class="grid-item__content-wrapper">
+                    <% urlparse = "http://res.cloudinary.com/asian-tech/image/upload/"%>
+                    <div class="portfolio" href="<%= img.url %>" ><a class="portfolio__bg" href= "<%= img.url %>" style="background-image: url('<%= img.url %>');" data-effect="mfp-zoom-in"><%=cl_image_tag(img.public_id, :width => 200, :crop => :fill) %></a>
+                    </div>
+                  </div>
+                </div>
+                <%= name = img.public_id[(img.public_id.rindex('/')+1)..-1]%>
+                <div class="meta-raws" id="<%=name%>">
+                  <script>
+                    if(file_text.includes("<%=img.public_id[(img.public_id.rindex('/')+1)..-1]%>")) {
+                    $("#<%=name%>").append("<%=escape_javascript(check_box_tag('accept', name, true))%>");
+                    } else {
+                      $("#<%=name%>").append("<%=escape_javascript(check_box_tag 'accept', name)%>");
+                    };
+                  </script>
+                  <p><%=name%></p>
+                </div>
+                <hr>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="chose-follow">
+        <b>File bạn chọn</b>
+        <div id="text"></div>
+        <div class="form-item">
+          <input type="submit" value="Submit" class="md-btn btn-custom" onclick="saveText('<%=@code%>')">
+          <button type="submit" value="Reset" class="btn btn-success" onclick="resetLocal()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <% File.open('/tmp/text.txt', 'w') { |file| file.write("your text\nyour text\nyour text\n") }%> -->
+<script>
+  $('#raws').ready(function(){
+    text = file_text.replace(/\n/g,'<br>');
+    $('#text').html(text);
+    $('input:checkbox').change(
+    function(e){
+        if ($(this).is(':checked')) {
+          file_text = `\n${e.target.value}${file_text}`;
+          localStorage.setItem("FILE", file_text);
+          text = file_text.replace(/\n/g,'<br>');
+          $('#text').html(text);
+        }
+        else {
+          const name = e.target.value;
+          file_text = file_text.replace(`\n${name}`,'');
+          localStorage.setItem("FILE", file_text);
+          text = file_text.replace(/\n/g,'<br>');
+          $('#text').html(text);
+        }
+    });
+  });
+  function resetLocal() {
+    localStorage.clear();
+    location.reload();
+  }
+  function saveText(value1) {
+    $.ajax({
+      url:`../${value1}/submit`,
+      type:'POST',
+      dataType:'json',
+      data:{
+        value: localStorage.getItem("FILE")
+      },
+      dataType: 'script',
+      success:function(data){
+        localStorage.clear();
+      },
+      error:function(data){
+        console.log(data)
+      }
+    });
+  }
+</script>

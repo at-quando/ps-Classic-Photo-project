@@ -1,4 +1,3 @@
-//= require vendors/jquery/jquery.min.js
 //= require vendors/imagesloaded/imagesloaded.pkgd.js
 //= require vendors/isotope-layout/isotope.pkgd.js
 //= require vendors/jquery-one-page/jquery.nav.min.js

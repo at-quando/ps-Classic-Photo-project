@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :contracts
   resources :prices
+  resources :raws, only: [:show, :create, :index]
+  post ':id/submit' => 'raws#submit', :as => 'submit_raws'
   get "/" => redirect("/home")
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

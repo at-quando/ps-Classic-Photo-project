@@ -1,5 +1,6 @@
 class ViewersController < ApplicationController
   def index
+    # @image = Cloudinary::Api.resources(:type => :upload, :prefix => "50mmstudio")
   end
 
   def create 

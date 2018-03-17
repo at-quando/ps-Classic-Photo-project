@@ -591,11 +591,9 @@ textarea {
 body {
     margin: 0;
     padding: 0;
-    line-height: 2.1;
     font-size: 14px;
     font-weight: 400;
-    font-family: "Poppins", sans-serif;
-    color: #748182;
+    color: black;
 }
 
 body.md-skin-dark {
@@ -638,30 +636,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
     color: inherit;
     text-decoration: none;
-}
-
-h1 {
-    font-size: 60px;
-}
-
-h2 {
-    font-size: 52px;
-}
-
-h3 {
-    font-size: 44px;
-}
-
-h4 {
-    font-size: 32px;
-}
-
-h5 {
-    font-size: 28px;
-}
-
-h6 {
-    font-size: 18px;
 }
 
 h3, h1, h2, h3 {
@@ -1666,7 +1640,6 @@ ul {
 .service__title {
     font-size: 15px;
     font-weight: 500;
-    letter-spacing: 2px;
     margin-top: 0;
     margin-bottom: 8px;
 }
@@ -2600,9 +2573,29 @@ ul {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    
+}
+.price-back, #raws {
     .container {
         background-color: rgba(255,255,255,0.6);
         padding: 3rem 1rem;
+    }
+}
+#raws {
+    .chose-follow {
+        position: fixed;
+        top: 3rem;
+        right: 3rem;
+        z-index: 10;
+        background-color: rgba(255,255,255,0.7);
+        #text {
+            max-height: 20rem;
+            overflow: scroll;
+        }
+        .btn-success {
+            background-color: orange;
+            background-image: none;
+        }
     }
 }
 
@@ -2638,7 +2631,7 @@ ul {
     padding-bottom: 1rem;
 }
 .margin-fix {
-    padding-bottom: 2rem;
+    padding: 1rem 0;
 }
 .row {
     &:before {
@@ -2685,5 +2678,19 @@ ul {
     }
     table,tr,td {
         border: 1px black solid;
+    }
+}
+.meta-raws {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0.5rem 0;
+    input[type=checkbox]
+    {
+      /* Double-sized Checkboxes */
+      -ms-transform: scale(2); /* IE */
+      -moz-transform: scale(2); /* FF */
+      -webkit-transform: scale(2); /* Safari and Chrome */
+      -o-transform: scale(2); /* Opera */
+      padding: 10px;
     }
 }
