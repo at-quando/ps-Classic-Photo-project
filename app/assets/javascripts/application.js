@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require popper
+//= require cloudinary
 //= require bootstrap-sprockets
 //= require_tree .
 

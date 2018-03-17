@@ -13,10 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap"; 
+ @import "bootstrap";
+ @import "main.scss";
  @import "font-awesome";
- @import "pe-icon.css";
- @import "vendors/bootstrap/grid.css";
- @import "main.css";
- @import "vendors/magnific-popup/magnific-popup.min.css";
- @import "vendors/swiper/swiper.css";
+ @import "pe-icon.scss";

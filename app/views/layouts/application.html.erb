@@ -5,9 +5,9 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="shortcut icon" type="image/x-icon" href="/img/logo-only.png" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <% if request.path != '/home'%>
@@ -35,7 +35,7 @@
                 </li>
                 <li><a href="/clothes#id-8">Costume</a>
                 </li>
-                <li><a href="/viewers#id-7">Get Your Picture</a>
+                <li><a href="/viewers#intro">Get Your Picture</a>
                 </li>
                 <li><a href="/prices#id-6">Prices</a>
                 </li>
@@ -77,7 +77,6 @@
           </div>
         </div>
       </div><!-- End / footer -->
-      <%= javascript_include_tag 'app_extension' %>
       <script>
         window.fbAsyncInit = function() {
           FB.init({
