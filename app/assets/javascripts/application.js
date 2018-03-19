@@ -16,7 +16,7 @@
 //= require popper
 //= require bootstrap.min
 //= require bootstrap-sprockets
-//= require app_extension
+//= require_tree ./vendors
 
 
 
