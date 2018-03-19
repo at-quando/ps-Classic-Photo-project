@@ -24,7 +24,7 @@ class RawsController < ApplicationController
       @images = JSON.parse(images.to_json, object_class: OpenStruct)
       @code= params[:id]
     else
-      redirect_to raws_path
+      redirect_to viewers_path
     end
   end
 

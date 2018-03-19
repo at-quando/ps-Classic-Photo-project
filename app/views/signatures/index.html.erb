@@ -1,0 +1,9 @@
+<section class="md-section">
+  <div class="container">
+    <%= form_tag(signatures_path, method: :post, :enctype =>"multipart/form-data") do %>
+      <input type="text" name="code" class="col-md-6" placeholder="Code">
+      <%= file_field_tag "sign", class: "col-md-6" %>
+      <%= submit_tag "Submit", class: 'btn btn-primary btn-submit' %>
+    <% end %>
+  </div>
+</section>

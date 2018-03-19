@@ -51,7 +51,13 @@
         <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
       <% end %>
     </div>
-    <%= yield %>
+    <% if request.path != '/home'%>
+      <div style="padding-top: 70px;">
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <div class="footer">
         <div id="back-to-top"><i class="pe-7s-angle-up"></i></div>
         <div class="container">
