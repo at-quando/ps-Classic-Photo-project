@@ -8,3 +8,4 @@
 //= require vendors/swiper/swiper.jquery.js
 //= require vendors/menu/menu.js
 //= require ./js/main.js
+//= require_tree ./vendors

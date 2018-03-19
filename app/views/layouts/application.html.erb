@@ -77,7 +77,7 @@
           </div>
         </div>
       </div><!-- End / footer -->
-      <%= javascript_include_tag 'app_extension'%>
+      <%= javascript_include_tag 'app_extension', 'data-turbolinks-track' => true %>
       <script>
         window.fbAsyncInit = function() {
           FB.init({

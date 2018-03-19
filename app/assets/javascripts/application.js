@@ -12,11 +12,9 @@
 //
 //= require jquery3
 //= require jquery_ujs
-//= require turbolinks
 //= require popper
 //= require bootstrap.min
 //= require bootstrap-sprockets
-//= require_tree ./vendors
-
-
-
+//= require app_extension
+//= require rawui
+//= require turbolinks
