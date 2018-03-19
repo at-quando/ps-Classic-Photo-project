@@ -7,4 +7,3 @@
 //= require raws_vendors/main.js
 //= require raws_vendors/ie/html5shiv.js
 //= require raws_vendors/ie/respond.min.js
-//= require_tree ./raws_vendors

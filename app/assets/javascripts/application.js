@@ -15,6 +15,4 @@
 //= require popper
 //= require bootstrap.min
 //= require bootstrap-sprockets
-//= require app_extension
-//= require rawui
 //= require turbolinks
