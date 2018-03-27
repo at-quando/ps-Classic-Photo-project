@@ -23,9 +23,8 @@ gem 'devise'
 gem 'cancan' # or cancancan
 gem 'draper'
 gem 'pundit'
-gem 'activeadmin_quill_editor'
 # Use sqlite3 as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -54,7 +53,7 @@ gem "capistrano3-puma"
 gem "capistrano-rails", require: false
 gem "capistrano-bundler", require: false
 gem "capistrano-rvm"
-
+gem 'froala-editor-sdk'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

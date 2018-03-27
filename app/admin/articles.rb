@@ -16,7 +16,7 @@ ActiveAdmin.register Article do
     f.inputs 'Article' do
       f.input :title
       f.input :description
-      f.input :content, as: :froala_editor
+      f.input :content
       f.input :kind
       f.input :key
     end
