@@ -38,8 +38,6 @@ GEM
       sprockets (< 4.1)
     activeadmin_froala_editor (0.1.2)
       activeadmin (~> 1.0)
-    activeadmin_quill_editor (0.1.1)
-      activeadmin (~> 1.0)
     activejob (5.1.5)
       activesupport (= 5.1.5)
       globalid (>= 0.3.6)
@@ -380,7 +378,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   activeadmin_froala_editor
-  activeadmin_quill_editor
   bootstrap (~> 4.0.0.beta3)
   byebug
   cancan
