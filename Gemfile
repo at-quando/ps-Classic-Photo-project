@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'popper_js', '~> 1.12.9'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+gem 'activeadmin_froala_editor'
 
 # Plus integrations with:
 gem 'devise'
