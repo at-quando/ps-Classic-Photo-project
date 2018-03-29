@@ -15,7 +15,7 @@
 						</ul>
 					</div>
 					<span class="image object">
-						<img src="<%=@article.images[0]%>" alt="" />
+						<img src="<%=@article.images[0].name%>" alt="" />
 					</span>
 				</section>
 				<section>
@@ -58,7 +58,7 @@
 					<div class="mini-posts">
 					<% @articles_rand.each do |art| %>
 						<article>
-							<a href="#" class="image"><img src="<%= art.images[0] %>" alt="" /></a>
+							<a href="#" class="image"><img src="<%= art.images[0].name %>" alt="" /></a>
 							<p><%= art.title %></p>
 						</article>
 						<% end %>

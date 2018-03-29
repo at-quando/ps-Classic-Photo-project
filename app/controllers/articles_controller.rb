@@ -9,7 +9,8 @@ class ArticlesController < ApplicationController
     elsif request.path == '/clothes'
       @articles = Article.all.where(kind: 0)
       @article = Article.find_by(kind: 0, favorite: 1)
-      @articles_rand= Article.order("RAND()")
+      binding.pry
+      @articles_rand = Article.order("RAND()")
     elsif request.path == '/ask'
       @articles = Article.all.where(kind: 3)
       @article = Article.find_by(kind: 3, favorite: 1)
