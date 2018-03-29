@@ -8,13 +8,13 @@
           <div class="col-lg-4">
             <div>
               <% if article.images[0]%>
-                <div class="post__media"><a href="<%= clothe_path(article)%>"><img src="<%=article.images[0].name %>" alt="costume"/></a></div>
+                <div class="post__media"><a href="<%= article_with_title_path(article, :title => article.url) %>"><img src="<%=article.images[0].name %>" alt="costume"/></a></div>
               <% end %>
               <div class="post__body">
-                <a href="<%= clothe_path(article) %>">
+                <a href="<%= article_with_title_path(article, :title => article.url) %>">
                   <h2 class="post__title"><%=article.title %></h2>
                 </a>
-                <div class="fb-like" data-href="<%= clothe_path(article)%>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                <div class="fb-like" data-href="<%= article_with_title_path(article, :title => article.url) %>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
                 <div class="post__meta"><span class="author"><a href="#"><%=article.key %></a></span><span class="date"><%=article.created_at.strftime('%d/%m/%y') %></span></div>
                 <p class="post__text"><%=article.description[0..200] %></p>
               </div>

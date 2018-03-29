@@ -1,0 +1,78 @@
+
+<div id="wrapper">
+	<% if @articles && @article && @articles_rand%>
+		<div id="main">
+			<div class="inner">
+				<hr style="border-bottom: solid 10px #f56a6a;" >
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h1><%=@article.title%></h1>
+							<p>by the Classic Studio</p>
+						</header>
+						<p><%=@article.description[0..200]%></p>
+						<ul class="actions">
+						</ul>
+					</div>
+					<span class="image object">
+						<img src="<%=@article.images[0]%>" alt="" />
+					</span>
+				</section>
+				<section>
+					<header class="major">
+						<h2>Ipsum sed dolor</h2>
+					</header>
+					<div class="posts">
+						<% @articles.each do |article| %>
+							<article>
+								<% if article.images[0]%>
+									<div class="image"><a href="<%= article_with_title_path(article, :title => article.url) %>"><img src="<%=article.images[0].name %>" alt="costume"/></a></div>
+								<% end %>
+								<h3><%=article.title %></h3>
+								<p><%=article.description[0..200] %></p>
+								<ul class="actions">
+								</ul>
+							</article>
+						<% end %>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div id="sidebar">
+			<div class="inner">
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="/clothes">Clothes (Trang phục)</a></li>
+						<li><a href="/posing">Posing (Tạo dáng)</a></li>
+						<li><a href="/concept">Concept (Chủ đề)</a></li>
+						<li><a href="/ask">Ask & Answer (Hỏi đáp)</a></li>
+					</ul>
+				</nav>
+				<section>
+					<header class="major">
+						<h2>Bài viết liên quan</h2>
+					</header>
+					<div class="mini-posts">
+					<% @articles_rand.each do |art| %>
+						<article>
+							<a href="#" class="image"><img src="<%= art.images[0] %>" alt="" /></a>
+							<p><%= art.title %></p>
+						</article>
+						<% end %>
+					</div>
+					<ul class="actions">
+					</ul>
+				</section>
+				<section>
+					<div class="fb-page" data-href="https://www.facebook.com/classic.yearbook/" data-height="1500" data-tabs="timeline,events" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/classic.yearbook/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/classic.yearbook/">The Classic Studio - Kỷ yếu số 1 Đà Thành</a></blockquote></div>
+				</section>
+			</div>
+		</div>
+	<% else %>
+		<h2>Nothing here</h2>
+	<% end %>
+</div>
+
