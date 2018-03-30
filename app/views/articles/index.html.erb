@@ -12,7 +12,7 @@
 							</a>
 							<p>by the Classic Studio</p>
 						</header>
-						<p><%=@article.description[0..200]%></p>
+						<p><%=@article.description[0..700]%></p>
 						<ul class="actions">
 						</ul>
 					</div>
@@ -28,7 +28,7 @@
 						<% @articles.each do |article| %>
 							<article>
 								<% if article.images[0]%>
-									<a href="<%= article_with_title_path(article, :title => article.url) %>"><div class="image"><img src="<%=article.images[0].name %>" alt="costume"/></div></a>
+									<a class="image object" href="<%= article_with_title_path(article, :title => article.url) %>"><div class="image"><img src="<%=article.images[0].name %>" alt="costume"/></div></a>
 								<% end %>
 								<a href="<%= article_with_title_path(article, :title => article.url) %>">
 									<h3><%=article.title %></h3>
