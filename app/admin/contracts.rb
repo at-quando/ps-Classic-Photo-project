@@ -53,11 +53,13 @@ ActiveAdmin.register Contract do
       f.input :code
     end
     f.has_many :contract_plans do |plan|
-      plan.inputs 'Plan', :multipart => true do 
-        plan.input :quater
-        plan.input :costume
-        plan.input :place
-        plan.input :prepare
+      unless !plan.object.new_record?
+        plan.inputs 'Plan', :multipart => true do 
+          plan.input :quater
+          plan.input :costume
+          plan.input :place
+          plan.input :prepare
+        end
       end
     end
     f.has_many :viewers do |view|

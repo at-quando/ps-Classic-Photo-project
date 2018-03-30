@@ -21,8 +21,10 @@ ActiveAdmin.register Article do
       f.input :key
     end
     f.has_many :images do |image|
-      image.inputs 'Image', :multipart => true do 
-        image.input :name, as: :file
+      unless !image.object.new_record?
+        image.inputs 'Image', :multipart => true do 
+          image.input :name, as: :file
+        end
       end
     end
 
