@@ -27,7 +27,7 @@
                 <% end %>
               </div>
             </div>
-						<p><%=@article.description%></p>
+						<p class="art-desc"><%=@article.description%></p>
             <div id="myDiv">
             </div>
 					</div>
@@ -82,6 +82,7 @@
     var xmlString = <%= @article.content.to_json.to_s.html_safe %>;
     var div = document.getElementById('myDiv');
     $('#myDiv').html(xmlString);
+		$("p:has(img)").css({textAlign: "center"});
   })
 </script>
 

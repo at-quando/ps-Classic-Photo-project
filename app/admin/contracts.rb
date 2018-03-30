@@ -52,8 +52,8 @@ ActiveAdmin.register Contract do
       f.input :gift
       f.input :code
     end
-    f.has_many :contract_plans do |plan|
-      unless !plan.object.new_record?
+    unless !f.object.new_record?
+      f.has_many :contract_plans do |plan|
         plan.inputs 'Plan', :multipart => true do 
           plan.input :quater
           plan.input :costume
