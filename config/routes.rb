@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :prices
   resources :signatures, only: [:index, :create]
   resources :raws, only: [:show, :create, :index]
-  get '/clothes/:id/:title' => 'clothes#show', :as => :article_with_title
+  get '/clothes/:id/:title' => 'articles#show', :as => :article_with_title
   get '/posing' => 'articles#index', :as => :article_posing
   get '/concept' => 'articles#index', :as => :article_concept
   get '/clothes' => 'articles#index', :as => :article_clothes
