@@ -42,13 +42,13 @@
                 <% total = total + pack.price %>
               <% end %>
               <label>Trang Phục/ Phụ kiện: </label><br>
-              <% @contract.carts do |cart|%>
+              <% @contract.carts.each do |cart|%>
                 <% if cart.accessory %>
                   + <b><%= cart.quantity %> <%= cart.accessory.name %> - <%= cart.accessory.price%></b><br>
-                  <% total = total + cart.quantity * cart.accessory.price %>
+                  <% total = total + cart.quantity.to_f * cart.accessory.price.to_f %>
                 <% else %>
                   + <b><%= cart.quantity %> <%= cart.cloth.name %> - <%= cart.cloth.hire%></b><br>
-                  <% total = total + cart.quantity * cart.cloth.hire %>
+                  <% total = total + cart.quantity.to_f * cart.cloth.hire.to_f %>
                 <% end %>
               <% end %>
               <label>Tổng tiền: </label><b><%= total %></b><br>
