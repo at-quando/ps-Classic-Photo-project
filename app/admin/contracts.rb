@@ -18,19 +18,22 @@ ActiveAdmin.register Contract do
     id_column
     column :name
     column :phone
+    column :taken_date
+    column :code
     column :school
     column :school_year
+    column 'Link Contract' do |member|
+      link_to("link", "../contracts/#{member.id}?code=#{member.code}").html_safe
+    end
     column :address
     column :town
     column :group
-    column :taken_date
     column :num_pp
     column :price_id
     column :package
     column :deposit
     column :prepare
     column :gift
-    column :code
     actions
   end
 
