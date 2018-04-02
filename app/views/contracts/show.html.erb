@@ -39,7 +39,7 @@
               <% total = @contract.price.price %>
               <% @package.each do |pack|%>
                 + <b><%= pack.name %> - <%= pack.price%></b><br>
-                <% total = @contract.price.price + pack.price %>
+                <% total = total + pack.price %>
               <% end %>
               <label>Tổng tiền: </label><b><%= total %></b><br>
               <label>Đã đặt cọc: </label><b><%= @contract.deposit %></b><br>
