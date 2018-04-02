@@ -41,6 +41,16 @@
                 + <b><%= pack.name %> - <%= pack.price%></b><br>
                 <% total = total + pack.price %>
               <% end %>
+              <label>Trang Phục/ Phụ kiện: </label><br>
+              <% @contract.carts do |cart|%>
+                <% if cart.accessory %>
+                  + <b><%= cart.quantity %> <%= cart.accessory.name %> - <%= cart.accessory.price%></b><br>
+                  <% total = total + cart.quantity * cart.accessory.price %>
+                <% else %>
+                  + <b><%= cart.quantity %> <%= cart.cloth.name %> - <%= cart.cloth.hire%></b><br>
+                  <% total = total + cart.quantity * cart.cloth.hire %>
+                <% end %>
+              <% end %>
               <label>Tổng tiền: </label><b><%= total %></b><br>
               <label>Đã đặt cọc: </label><b><%= @contract.deposit %></b><br>
               <label>Còn lại: </label><b><%= total - @contract.deposit %></b><br>
