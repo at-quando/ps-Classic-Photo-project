@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link]
+  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link], carts_attributes: [:accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -62,6 +62,13 @@ ActiveAdmin.register Contract do
           plan.input :costume
           plan.input :place
           plan.input :prepare
+        end
+      end
+      f.has_many :carts do |car|
+        car.inputs 'Cart', :multipart => true do 
+          car.input :accessory_id, :as => :select, :collection => Accessory.all.map{|u| ["#{u.name}, #{u.price}", u.id]}
+          car.input :cloth_id, :as => :select, :collection => Cloth.all.map{|v| ["#{v.name}, #{v.hire}", v.id]}
+          car.input :quantity
         end
       end
     end
