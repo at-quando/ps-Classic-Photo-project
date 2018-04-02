@@ -51,6 +51,11 @@
                   <% total = total + cart.quantity.to_f * cart.cloth.hire.to_f %>
                 <% end %>
               <% end %>
+              <label>Phát sinh: </label><br>
+              <% @contract.plus.each do |plu|%>
+                  + <b><%= plu.content %> - <%= plus.total%></b><br>
+                  <% total = total + plu.total.to_f %>
+              <% end %>
               <label>Tổng tiền: </label><b><%= total %></b><br>
               <label>Đã đặt cọc: </label><b><%= @contract.deposit %></b><br>
               <label>Còn lại: </label><b><%= total - @contract.deposit %></b><br>

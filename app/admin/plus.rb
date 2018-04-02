@@ -1,5 +1,5 @@
 ActiveAdmin.register Plu do
-  permit_params :quantity, :price, :total, :contract_id
+  permit_params :quantity, :price, :total, :contract_id, :content
 
   index do
     selectable_column
