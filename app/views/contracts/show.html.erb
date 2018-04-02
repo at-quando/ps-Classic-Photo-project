@@ -53,7 +53,7 @@
               <% end %>
               <label>Phát sinh: </label><br>
               <% @contract.plus.each do |plu|%>
-                  + <b><%= plu.content %> - <%= plus.total%></b><br>
+                  + <b><%= plu.content %> - <%= plu.total%></b><br>
                   <% total = total + plu.total.to_f %>
               <% end %>
               <label>Tổng tiền: </label><b><%= total %></b><br>
