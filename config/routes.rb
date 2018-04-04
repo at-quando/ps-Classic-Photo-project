@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :contracts
   resources :prices
+  resources :google, only: [:index, :create]
   resources :signatures, only: [:index, :create]
   resources :raws, only: [:show, :create, :index]
   get '/clothes/:id/:title' => 'articles#show', :as => :article_with_title

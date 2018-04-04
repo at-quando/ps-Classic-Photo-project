@@ -1,0 +1,9 @@
+<section class="md-section">
+  <div class="container">
+    <%= form_tag(google_index_path, method: :post, :enctype =>"multipart/form-data") do %>
+      <input type="password" name="password" class="col-md-6" placeholder="inpur password">
+      <input type="text" name="folderId" class="col-md-6" placeholder="folder google ID">
+      <%= submit_tag "Submit", class: 'btn btn-primary btn-submit' %>
+    <% end %>
+  </div>
+</section>

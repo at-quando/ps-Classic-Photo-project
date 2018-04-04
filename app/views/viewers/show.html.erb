@@ -1,5 +1,5 @@
-<section class="md-section photo-section" id="id-7">
-  <div class="container">
+<div class="container">
+  <section class="md-section photo-section" id="id-7">
     <div class="info-view">
       <h2>Picture</h2>
       <h3 style="text-transform: uppercase"><%=@view.group%> - <%=@view.school%></h3>
@@ -14,20 +14,70 @@
       <% end %>
     </div>
     <% id = @page.to_i - 1 %>
-    <% reverse_link = 'https://drive.google.com/embeddedfolderview?id=' + @link[id]+ '#grid'%>
-      <iframe id="filecontainer" src="<%= reverse_link %>" style="width:100%; height:600px; border:0;"></iframe>
-  </div>
-</section>
+    <% picture = @view.viewers.first.pictures.where(folder: @link[id])[0]%>
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="grid-css grid-css--grid" data-col-lg="6" data-col-md="6" data-col-sm="6" data-col-xs="1" data-gap="30">
+          <div class="grid__inner">
+            <div class="grid-sizer"></div>
+            <% picture.pictureId.split(',').each_with_index do |pic, index| %>
+              <div class="grid-item normal">
+                <div class="grid-item__inner">  
+                  <div class="grid-item__content-wrapper">
+                    <% urlparse = "https://drive.google.com/thumbnail?id=#{pic}&sz=w300-h300"%>
+                    <% urlparseHD = "https://drive.google.com/thumbnail?id=#{pic}&sz=w2048-h1365"%>
+                    <div class="portfolio" href="<%= urlparseHD %>" id = "<%= index %>" >
+                      <a class="portfolio__bg" href= "<%= urlparseHD %>" style="background-image: url('<%= urlparse %>');" data-effect="mfp-zoom-in">
+                        <img src="" id="main_viewer" alt="classic_pictures">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <p style="text-align: center"><%= picture.name.split(',')[index] %></p>
+                <hr>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="top-menu-quick">
+  <div id="back-to-top"><i class="pe-7s-angle-up"></i></div>
+</div>
 <script>
- 
   $(document).ready(function(){
-    focus();
-    var listener = window.addEventListener('blur', function() {
-      console.log(122332);
-      if (document.activeElement === document.getElementById('filecontainer')) {
-        console.log(12);
-      }
-      window.removeEventListener('blur', listener);
+    $(".portfolio").click(function(event) {
+      var images = <%= picture.pictureId.split(',').to_json.to_s.html_safe %>;
+      var btn_prev = $(`<button class="prev"><i class="fa fa-angle-left"></i></button>`);  
+      var btn_next = $(`<button class="next"><i class="fa fa-angle-right"></i></button>`);  
+      btn_prev.click(function(event){
+        var url_string = $(".mfp-img").attr('src'); //window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("id");
+        const currentIndex = images.indexOf(c);
+        prev = images[currentIndex - 1];
+        urlparseHD = `https://drive.google.com/thumbnail?id=${prev}&sz=w2048-h1365`;
+        $(".mfp-img").attr('src', urlparseHD);
+        $(`#${currentIndex}`)
+        event.stopImmediatePropagation();
+      });
+      btn_next.click(function(event){
+        var url_string = $(".mfp-img").attr('src'); //window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("id");
+        const currentIndex = images.indexOf(c);
+        next = images[currentIndex + 1];
+        urlparseHD = `https://drive.google.com/thumbnail?id=${next}&sz=w2048-h1365`;
+        $(".mfp-img").attr('src', urlparseHD);
+        event.stopImmediatePropagation();
+      });
+      $(".mfp-container").append(btn_prev, btn_next);
+    });
+    $("top-menu-quick").click(function(){
+      window.scrollTo(0, 0);
+      console.log(12);
     });
   });
 </script>

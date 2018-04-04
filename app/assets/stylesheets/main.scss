@@ -2694,3 +2694,32 @@ ul {
       padding: 10px;
     }
 }
+.top-menu-quick {
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    width: 100px;
+    font-size: 80px;
+}
+.prev, .next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.next {
+    right: 0;
+}
+.prev {
+    left: 0;
+}
+
+button {
+    background: 0;
+    color: white;
+    font-size: 5rem;
+    height: 50vh;
+}
+button:not(.disabled):hover {
+    background: 0;
+    background-color: rgba(255,255,255,0.3);
+}
