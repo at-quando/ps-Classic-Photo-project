@@ -2733,9 +2733,10 @@ button:not(.disabled):hover {
 }
 #downloadBtn {
     position: fixed;
-    bottom: 1rem;
+    bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
     z-index: 1100;
+    color: white;
 }
