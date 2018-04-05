@@ -19,7 +19,7 @@ class ViewersController < ApplicationController
       @page = 1
     end
     if @view
-      @link = @view.viewers[0].drive_link.split(',')
+      @link = @view.viewers.where(:type => 1).drive_link.split(',')
     else
       redirect_to viewers_path
       flash[:alert] = 'Maybe your photos are not completed or invalid!'

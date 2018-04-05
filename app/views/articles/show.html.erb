@@ -4,6 +4,13 @@
 		<div id="main">
 			<div class="inner">
 				<hr style="border-bottom: solid 10px #f56a6a;" >
+				<% if @article.kind == 0 %>
+					<% url = request.path %>
+					<% cloth = Cloth.find_by(link: url) %>
+					<% if cloth %>
+						<a href="<%= cloth_path(cloth)%>">Truy cập bảng giá thuê trang phục <%=@article.title%> </a>
+					<% end %>
+				<% end %>
 				<section id="banner">
 					<div class="content">
 						<header>

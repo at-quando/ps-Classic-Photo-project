@@ -1,0 +1,23 @@
+<section class="md-section" id="id-8">
+  <div class="row" style="padding: 0 2rem">
+    <div class="container">
+      <h3>Bảng giá cho thuê trang phục - The Classic Studio - Kỷ yếu số 1 Đà Nẵng</h3>
+      <table>
+        <tr>
+          <th>Tên trang phục</th>
+          <th>Link Xem</th>
+          <th>Gía Thuê</th>
+          <th>Giá Mất</th>
+        </tr>
+        <% @articles.each do |art| %>
+          <tr>
+            <td><%=art.name%></td>
+            <td><%=art.link%></td>
+            <td><%=art.hire%></td>
+            <td><%=art.lost%></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</section>

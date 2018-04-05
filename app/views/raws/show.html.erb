@@ -3,30 +3,49 @@
 </script>
 <section id="raws" class="md-section details">
   <div class="row" style="padding: 0 2rem">
+    <div class="info-view">
+      <h2>Picture</h2>
+      <h3 style="text-transform: uppercase"><%=@view.group%> - <%=@view.school%></h3>
+      <p style="text-transform: uppercase"><%=@view.school_year%></p>
+      <% @link.each_index do |index| %>
+        <% count = index + 1 %>
+        <% if index + 1 == @page.to_i %>
+          <%= link_to index + 1, raw_path(@view.code, :page => count), class: 'paginate active-pag' %>
+        <% else %>
+          <%= link_to index + 1, raw_path(@view.code, :page => count), class: 'paginate' %>
+        <% end %>
+      <% end %>
+    </div>
+    <% id = @page.to_i - 1 %>
     <div class="container">
       <div class="col-sm-12">
         <div class="grid-css grid-css--grid" data-col-lg="6" data-col-md="6" data-col-sm="6" data-col-xs="1" data-gap="30">
           <div class="grid__inner">
             <div class="grid-sizer"></div>
-            <% @images.each do |img| %>
+            <% picture = @view.viewers.first.pictures.find_by(folder: @link[id])%>
+            <% picture.pictureId.split(',').each_with_index do |pic, index| %>
               <div class="grid-item normal">
                 <div class="grid-item__inner">  
                   <div class="grid-item__content-wrapper">
-                    <% urlparse = "http://res.cloudinary.com/asian-tech/image/upload/"%>
-                    <div class="portfolio" href="<%= img.url %>" ><a class="portfolio__bg" href= "<%= img.url %>" style="background-image: url('<%= img.url %>');" data-effect="mfp-zoom-in"><%=cl_image_tag(img.public_id, :width => 200, :crop => :fill) %></a>
+                    <% urlparse = "https://drive.google.com/thumbnail?id=#{pic}&sz=w300-h300"%>
+                    <% urlparseHD = "https://drive.google.com/thumbnail?id=#{pic}&sz=w2048-h1365"%>
+                    <div class="portfolio" href="<%= urlparseHD %>"  >
+                      <a class="portfolio__bg" href= "<%= urlparseHD %>" style="background-image: url('<%= urlparse %>');" data-effect="mfp-zoom-in">
+                        <img src="" id="main_viewer" alt="classic_pictures">
+                      </a>
                     </div>
                   </div>
                 </div>
-                <%= name = img.public_id[(img.public_id.rindex('/')+1)..-1]%>
-                <div class="meta-raws" id="<%=name%>">
+                <% name = picture.name.split(',')[index]  %>
+                <span><%= name %></span>
+                <div class="meta-raws" id = "<%= index %>">
                   <script>
-                    if(file_text.includes("<%=img.public_id[(img.public_id.rindex('/')+1)..-1]%>")) {
-                    $("#<%=name%>").append("<%=escape_javascript(check_box_tag('accept', name, true))%>");
+                    if(file_text.includes("<%=name%>")) {
+                      $("#<%=index%>").append("<%=escape_javascript(check_box_tag('accept', name, true))%>");
                     } else {
-                      $("#<%=name%>").append("<%=escape_javascript(check_box_tag 'accept', name)%>");
+                      $("#<%=index%>").append("<%=escape_javascript(check_box_tag('accept', name))%>");
                     };
                   </script>
-                  <p><%=name%></p>
                 </div>
                 <hr>
               </div>
@@ -38,15 +57,50 @@
         <b>File bạn chọn</b>
         <div id="text"></div>
         <div class="form-item">
-          <input type="submit" value="Submit" class="md-btn btn-custom" onclick="saveText('<%=@code%>')">
+          <input type="submit" value="Submit" class="md-btn btn-custom" onclick="saveText('<%=@view.code%>')">
           <button type="submit" value="Reset" class="btn btn-success" onclick="resetLocal()">Reset</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+<div class="top-menu-quick">
+  <div id="back-to-top"><i class="pe-7s-angle-up"></i></div>
+</div>
 <!-- <% File.open('/tmp/text.txt', 'w') { |file| file.write("your text\nyour text\nyour text\n") }%> -->
 <script>
+  $(document).ready(function(){
+    $(".portfolio").click(function(event) {
+      var images = <%= picture.pictureId.split(',').to_json.to_s.html_safe %>;
+      var btn_prev = $(`<button class="prev"><i class="fa fa-angle-left"></i></button>`);  
+      var btn_next = $(`<button class="next"><i class="fa fa-angle-right"></i></button>`);  
+      btn_prev.click(function(event){
+        var url_string = $(".mfp-img").attr('src'); //window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("id");
+        const currentIndex = images.indexOf(c);
+        prev = images[currentIndex - 1];
+        urlparseHD = `https://drive.google.com/thumbnail?id=${prev}&sz=w2048-h1365`;
+        $(".mfp-img").attr('src', urlparseHD);
+        $(`#${currentIndex}`)
+        event.stopImmediatePropagation();
+      });
+      btn_next.click(function(event){
+        var url_string = $(".mfp-img").attr('src'); //window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("id");
+        const currentIndex = images.indexOf(c);
+        next = images[currentIndex + 1];
+        urlparseHD = `https://drive.google.com/thumbnail?id=${next}&sz=w2048-h1365`;
+        $(".mfp-img").attr('src', urlparseHD);
+        event.stopImmediatePropagation();
+      });
+      $(".mfp-container").append(btn_prev, btn_next);
+    });
+    $("top-menu-quick").click(function(){
+      window.scrollTo(0, 0);
+    });
+  });
   $('#raws').ready(function(){
     text = file_text.replace(/\n/g,'<br>');
     $('#text').html(text);
@@ -73,7 +127,7 @@
   }
   function saveText(value1) {
     $.ajax({
-      url:`../${value1}/submit`,
+      url:`${value1}/submit`,
       type:'POST',
       dataType:'json',
       data:{

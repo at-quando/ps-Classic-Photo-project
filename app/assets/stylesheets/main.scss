@@ -615,6 +615,7 @@ p {
 
 a {
     transition: all .3s ease;
+    cursor: pointer;
 }
 
 a, input, textarea, select {
@@ -2584,7 +2585,7 @@ ul {
 #raws {
     .chose-follow {
         position: fixed;
-        top: 3rem;
+        top: 10rem;
         right: 3rem;
         z-index: 10;
         background-color: rgba(255,255,255,0.7);
@@ -2705,6 +2706,7 @@ ul {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
+    height: 50vh;
 }
 .next {
     right: 0;
@@ -2717,9 +2719,11 @@ button {
     background: 0;
     color: white;
     font-size: 5rem;
-    height: 50vh;
 }
 button:not(.disabled):hover {
     background: 0;
     background-color: rgba(255,255,255,0.3);
+}
+.sub-nav-bar-article {
+    padding-right: 1rem;
 }

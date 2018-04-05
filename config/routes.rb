@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :contracts
   resources :prices
+  resources :cloths
+  resources :accessories
   resources :google, only: [:index, :create]
   resources :signatures, only: [:index, :create]
   resources :raws, only: [:show, :create, :index]
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   get '/concept' => 'articles#index', :as => :article_concept
   get '/clothes' => 'articles#index', :as => :article_clothes
   get '/ask' => 'articles#index', :as => :article_ask
-  post ':id/submit' => 'raws#submit', :as => 'submit_raws'
+  post '/raws/:id/submit' => 'raws#submit', :as => 'submit_raws'
   post "/upload_image" => "upload#upload_image", :as => :upload_image
   get "/download_file/:name" => "upload#access_file", :as => :access_file, :name => /.*/
   get "/" => redirect("/home")

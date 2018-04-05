@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404031421) do
+ActiveRecord::Schema.define(version: 20180405070446) do
 
   create_table "accessories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link"
   end
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20180404031421) do
     t.string "lost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link"
   end
 
   create_table "contract_photographers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -222,6 +224,7 @@ ActiveRecord::Schema.define(version: 20180404031421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "contract_id"
+    t.integer "typeFile"
     t.index ["contract_id"], name: "index_viewers_on_contract_id"
   end
 

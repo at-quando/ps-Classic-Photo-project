@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link], carts_attributes: [:accessory_id, :cloth_id, :quantity]
+  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :type], carts_attributes: [:accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -77,6 +77,7 @@ ActiveAdmin.register Contract do
         view.input :email
         view.input :pwd
         view.input :drive_link
+        view.input :type
       end
     end
     f.actions
