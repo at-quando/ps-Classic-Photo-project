@@ -690,6 +690,9 @@ blockquote small {
     blockquote {
         font-size: 24px;
     }
+    button {
+        padding: 0 2em 0 2em;
+    }
 }
 
 abbr {
@@ -2707,6 +2710,7 @@ ul {
     top: 50%;
     transform: translateY(-50%);
     height: 50vh;
+    z-index: 1100;
 }
 .next {
     right: 0;
@@ -2726,4 +2730,12 @@ button:not(.disabled):hover {
 }
 .sub-nav-bar-article {
     padding-right: 1rem;
+}
+#downloadBtn {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    z-index: 1100;
 }

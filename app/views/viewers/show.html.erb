@@ -33,11 +33,12 @@
                     </div>
                   </div>
                 </div>
-                <p style="text-align: center"><%= picture.name.split(',')[index] %></p>
                 <% urlparseFullHD = "https://drive.google.com/uc?export=view&id=#{pic}"%>
-                <a href="<%= urlparseFullHD %>" download>
-                  <i class="fa fa-angle-left"></i>
-                </a>
+                <p style="text-align: center"><%= picture.name.split(',')[index] %> 
+                  <a href="<%= urlparseFullHD %>" download>
+                    <i class="fa fa-arrow-circle-down"></i>
+                  </a>
+                </p>
                 <hr>
               </div>
             <% end %>
@@ -53,9 +54,14 @@
 <script>
   $(document).ready(function(){
     $(".portfolio").click(function(event) {
+      var url_string1 = $(this).attr('href');
+      var url1 = new URL(url_string1);
+      var c1 = url1.searchParams.get("id");
+      const urlparseFullHD1 = `https://drive.google.com/uc?export=view&id=${c1}`;
       var images = <%= picture.pictureId.split(',').to_json.to_s.html_safe %>;
-      var btn_prev = $(`<button class="prev"><i class="fa fa-angle-left"></i></button>`);  
-      var btn_next = $(`<button class="next"><i class="fa fa-angle-right"></i></button>`);  
+      var btn_prev = $(`<button class="prev"><i class="fa fa-angle-left"></i></button>`);
+      var btn_next = $(`<button class="next"><i class="fa fa-angle-right"></i></button>`);
+      var download_btn = $(`<a id="downloadBtn" href="${urlparseFullHD1}" download><i class="fa fa-arrow-circle-down"></i></a>`);
       btn_prev.click(function(event){
         var url_string = $(".mfp-img").attr('src'); //window.location.href
         var url = new URL(url_string);
@@ -63,8 +69,9 @@
         const currentIndex = images.indexOf(c);
         prev = images[currentIndex - 1];
         urlparseHD = `https://drive.google.com/thumbnail?id=${prev}&sz=w2048-h1365`;
+        urlparseFullHD = `https://drive.google.com/uc?export=view&id=${prev}`;
         $(".mfp-img").attr('src', urlparseHD);
-        $(`#${currentIndex}`)
+        $("#downloadBtn").attr('href', urlparseFullHD);
         event.stopImmediatePropagation();
       });
       btn_next.click(function(event){
@@ -74,10 +81,15 @@
         const currentIndex = images.indexOf(c);
         next = images[currentIndex + 1];
         urlparseHD = `https://drive.google.com/thumbnail?id=${next}&sz=w2048-h1365`;
+        urlparseFullHD = `https://drive.google.com/uc?export=view&id=${next}`;
         $(".mfp-img").attr('src', urlparseHD);
+        $("#downloadBtn").attr('href', urlparseFullHD);
         event.stopImmediatePropagation();
       });
-      $(".mfp-container").append(btn_prev, btn_next);
+      download_btn.click(function(event){
+        event.stopImmediatePropagation();
+      })
+      $(".mfp-container").append(btn_prev, btn_next, download_btn);
     });
     $("top-menu-quick").click(function(){
       window.scrollTo(0, 0);
