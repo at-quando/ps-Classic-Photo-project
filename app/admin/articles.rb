@@ -1,5 +1,5 @@
 ActiveAdmin.register Article do
-  permit_params :content, :description, :kind, :title, :key, images_attributes: [:name]
+  permit_params :content, :url, :description, :kind, :title, :key, images_attributes: [:name]
 
   index do
     selectable_column
@@ -9,6 +9,7 @@ ActiveAdmin.register Article do
     column :description
     column :kind
     column :key
+    column :url
     actions
   end
 
@@ -19,6 +20,7 @@ ActiveAdmin.register Article do
       f.input :content
       f.input :kind
       f.input :key
+      f.input :url
     end
     unless !f.object.new_record?
       f.has_many :images do |image|
