@@ -77,7 +77,7 @@ ActiveAdmin.register Contract do
         view.input :email
         view.input :pwd
         view.input :drive_link
-        view.input :type
+        view.input :typeFile
       end
     end
     f.actions
