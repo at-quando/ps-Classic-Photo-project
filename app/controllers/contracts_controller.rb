@@ -15,4 +15,8 @@ class ContractsController < ApplicationController
       @code  = params['code'].first
     end
   end
+
+  def scription
+    @contract = Contract.find(params[:id])
+  end
 end

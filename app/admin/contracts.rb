@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :type], carts_attributes: [:accessory_id, :cloth_id, :quantity]
+  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :typeFile], carts_attributes: [:accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -24,6 +24,9 @@ ActiveAdmin.register Contract do
     column :school_year
     column 'Link Contract' do |member|
       link_to("link", "../contracts/#{member.id}?code=#{member.code}").html_safe
+    end
+    column 'Scription' do |member|
+      link_to("link", "../scription/#{member.id}").html_safe
     end
     column :address
     column :town

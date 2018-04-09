@@ -11,11 +11,12 @@ Rails.application.routes.draw do
   resources :google, only: [:index, :create]
   resources :signatures, only: [:index, :create]
   resources :raws, only: [:show, :create, :index]
-  get '/clothes/:id/:title' => 'articles#show', :as => :article_with_title
+  get '/articles/:id/:title' => 'articles#show', :as => :article_with_title
   get '/posing' => 'articles#index', :as => :article_posing
   get '/concept' => 'articles#index', :as => :article_concept
   get '/clothes' => 'articles#index', :as => :article_clothes
   get '/ask' => 'articles#index', :as => :article_ask
+  get '/scription/:id' => 'contracts#scription', :as => :contract_scription
   post '/raws/:id/submit' => 'raws#submit', :as => 'submit_raws'
   post "/upload_image" => "upload#upload_image", :as => :upload_image
   get "/download_file/:name" => "upload#access_file", :as => :access_file, :name => /.*/
