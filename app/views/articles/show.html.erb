@@ -19,7 +19,9 @@
 							</a>
 							<p>by the Classic Studio</p>
 						</header>
-            <div class="grid-css grid-css--grid" data-col-lg="5" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
+						<div class="fb-like" data-href="<%= request.original_url %>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            <hr>
+						<div class="grid-css grid-css--grid" data-col-lg="5" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
               <div class="grid__inner">
                 <div class="grid-sizer"></div>
                 <% @article.images.each do |image| %>
@@ -37,6 +39,9 @@
 						<p class="art-desc"><%=@article.description%></p>
             <div id="myDiv">
             </div>
+						<hr>
+						<div class="fb-like" data-href="<%= request.original_url %>" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+						<div class="fb-comments" data-href="<%= request.original_url %>" data-numposts="10" data-mobile="false" data-width="100%"></div>
 					</div>
 				</section>
 			</div>
@@ -76,7 +81,7 @@
 					</ul>
 				</section>
 				<section>
-					<div class="fb-page" data-href="https://www.facebook.com/classic.yearbook/" data-height="1500" data-tabs="timeline,events" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/classic.yearbook/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/classic.yearbook/">The Classic Studio - Kỷ yếu số 1 Đà Thành</a></blockquote></div>
+					<div class="fb-page" data-href="https://www.facebook.com/classic.yearbook/" data-height="1500" data-width="250" data-tabs="timeline,events" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/classic.yearbook/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/classic.yearbook/">The Classic Studio - Kỷ yếu số 1 Đà Thành</a></blockquote></div>
 				</section>
 			</div>
 		</div>
