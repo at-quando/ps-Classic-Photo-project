@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :accessories
   resources :google, only: [:index, :create]
   resources :signatures, only: [:index, :create]
+  resources :schedule, only: [:index]
   resources :raws, only: [:show, :create, :index]
   get '/articles/:id/:title' => 'articles#show', :as => :article_with_title
   get '/posing' => 'articles#index', :as => :article_posing

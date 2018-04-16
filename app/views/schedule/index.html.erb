@@ -1,0 +1,27 @@
+<section class="md-section" id="id-8">
+  <div class="row" style="padding: 0 2rem">
+    <div class="container">
+      <h3>Lịch chụp</h3>
+      <table>
+        <tr>
+          <th>Ngày</th>
+          <th>Số lịch chụp</th>
+          <th>Danh sách hợp đồng cụ thể</th>
+        </tr>
+        <% @contracts.each do |keys, values| %>
+          <tr>
+            <td><%=keys%></td>
+            <td><%=values.length%></td>
+            <td>
+              <% values.each do |val| %>
+                ~ <%= val.group %> - <%= val.school %>
+                <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
+                <br>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</section>
