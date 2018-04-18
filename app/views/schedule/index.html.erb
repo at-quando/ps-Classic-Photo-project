@@ -9,7 +9,11 @@
           <th>Danh sách hợp đồng cụ thể</th>
         </tr>
         <% @contracts.each do |keys, values| %>
+        <% if keys.to_time < Time.now.utc.strftime("%Y%m%d") %>
+          <tr style="color: grey; background-color: #fafafa;">
+        <% else %>
           <tr>
+        <% end %>
             <td><%=keys%></td>
             <td><%=values.length%></td>
             <td>
