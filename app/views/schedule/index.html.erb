@@ -1,7 +1,7 @@
 <section class="md-section" id="id-8">
   <div class="row" style="padding: 0 2rem">
     <div class="container">
-      <h3>Lịch chụp</h3>
+      <h3>Lịch chụp chính</h3>
       <table>
         <tr>
           <th>Ngày</th>
@@ -9,21 +9,52 @@
           <th>Danh sách hợp đồng cụ thể</th>
         </tr>
         <% @contracts.each do |keys, values| %>
-        <% if keys.to_time < Time.now.utc.strftime("%Y%m%d") %>
-          <tr style="color: grey; background-color: #fafafa;">
-        <% else %>
-          <tr>
+        <% if keys %>
+          <% if keys.to_time < Time.now.utc.strftime("%Y%m%d") %>
+            <tr style="color: grey; background-color: #fafafa;">
+          <% else %>
+            <tr>
+          <% end %>
+              <td><%=keys%></td>
+              <td><%=values.length%></td>
+              <td>
+                <% values.each do |val| %>
+                  ~ <%= val.group %> - <%= val.school %>
+                  <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
+                  <br>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
-            <td><%=keys%></td>
-            <td><%=values.length%></td>
-            <td>
-              <% values.each do |val| %>
-                ~ <%= val.group %> - <%= val.school %>
-                <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
-                <br>
-              <% end %>
-            </td>
-          </tr>
+      </table>
+    </div>
+    <div class="container">
+      <h3>Lịch chụp phụ</h3>
+      <table>
+        <tr>
+          <th>Ngày</th>
+          <th>Số lịch chụp</th>
+          <th>Danh sách hợp đồng cụ thể</th>
+        </tr>
+        <% @contracts_bonus.each do |keys, values| %>
+        <% if keys %>
+          <% if keys.to_time < Time.now.utc.strftime("%Y%m%d") %>
+            <tr style="color: grey; background-color: #fafafa;">
+          <% else %>
+            <tr>
+          <% end %>
+              <td><%=keys%></td>
+              <td><%=values.length%></td>
+              <td>
+                <% values.each do |val| %>
+                  ~ <%= val.group %> - <%= val.school %>
+                  <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
+                  <br>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </table>
     </div>

@@ -32,6 +32,9 @@
           <div style="padding-left: 3rem;">
             <h3 class="center-head">Nội dung hợp đồng</h3>
             <label>Ngày chụp: </label><b><%= @contract.taken_date %></b><br>
+            <% if @contract.taken_date_2 %>
+              <label>Ngày chụp phụ: </label><b><%= @contract.taken_date_2 %></b><br>
+            <% end %>
             <label>Quà tặng: </label><b><%= @contract.gift %></b><br>
             <% if @contract.code === @code %>
               <label>Gói chụp cơ bản: </label><b> <%= @contract.price.price %> VND </b><br>

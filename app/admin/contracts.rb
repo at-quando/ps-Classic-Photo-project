@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :typeFile], carts_attributes: [:accessory_id, :cloth_id, :quantity]
+  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :typeFile], carts_attributes: [:accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -19,6 +19,7 @@ ActiveAdmin.register Contract do
     column :name
     column :phone
     column :taken_date
+    column :taken_date_2
     column :code
     column :school
     column :school_year
@@ -50,6 +51,7 @@ ActiveAdmin.register Contract do
       f.input :town
       f.input :group
       f.input :taken_date
+      f.input :taken_date_2
       f.input :num_pp
       f.input :price_id, :as => :select, :collection => Price.all.map{|u| ["#{u.num_pp}, #{u.price}", u.id]}
       f.input :package
