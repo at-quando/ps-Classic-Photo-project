@@ -34,7 +34,7 @@
             <label>Ngày chụp: </label><b><%= @contract.taken_date %></b><br>
             <label>Quà tặng: </label><b><%= @contract.gift %></b><br>
             <% if @contract.code === @code %>
-              <label>Gói chụp cơ bản: </label><b> <%= @contract.price.price %> VND cho sĩ số <%= @contract.price.num_pp %></b><br>
+              <label>Gói chụp cơ bản: </label><b> <%= @contract.price.price %> VND </b><br>
               <label>Gói mở rộng: </label><br>
               <% total = @contract.price.price %>
               <% @package.each do |pack|%>
