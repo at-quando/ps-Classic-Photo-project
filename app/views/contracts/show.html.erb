@@ -23,7 +23,7 @@
           <label>Họ và Tên: </label><b><%= @contract.name %></b><br>
           <label>Đại diện của Lớp - Trường: </label><b><%= @contract.group %> - <%= @contract.school %></b><br>
           <label>SĐT: </label><b><%= @contract.phone %></b><br>
-          <label>Sĩ sỗ lớp: </label><b><%= @contract.num_pp %></b><br>
+          <label>Sĩ số lớp: </label><b><%= @contract.num_pp %></b><br>
         </div>
       </div>
       <hr>
@@ -37,11 +37,11 @@
             <% end %>
             <label>Quà tặng: </label><b><%= @contract.gift %></b><br>
             <% if @contract.code === @code %>
-              <label>Gói chụp cơ bản: </label><b> <%= @contract.price.price %> VND </b><br>
+              <label>Gói chụp cơ bản: </label><b> <%= convert_money(@contract.price.price) %> VND </b><br>
               <label>Gói mở rộng: </label><br>
               <% total = @contract.price.price %>
               <% @package.each do |pack|%>
-                + <b><%= pack.name %> - <%= pack.price%></b><br>
+                + <b><%= pack.name %> - <%= convert_money(pack.price)%></b><br>
                 <% total = total + pack.price %>
               <% end %>
               <label>Trang Phục/ Phụ kiện: </label><br>
@@ -59,9 +59,9 @@
                   + <b><%= plu.content %> - <%= plu.total%></b><br>
                   <% total = total + plu.total.to_f %>
               <% end %>
-              <label>Tổng tiền: </label><b><%= total %></b><br>
-              <label>Đã đặt cọc: </label><b><%= @contract.deposit %></b><br>
-              <label>Còn lại: </label><b><%= total - @contract.deposit %></b><br>
+              <label>Tổng tiền: </label><b><%= convert_money(total) %></b><br>
+              <label>Đã đặt cọc: </label><b><%= convert_money(@contract.deposit) %></b><br>
+              <label>Còn lại: </label><b><%= convert_money(total - @contract.deposit) %></b><br>
             <% end %>
          </div>
         </div>
@@ -108,6 +108,7 @@
                 <img src="<%=ctr.photographer.avatar%>" class="ava">
                 <div>
                   <label>Họ và Tên: </label><b><%= ctr.photographer.name %></b><br>
+                  <label>Vai trò: </label><b><%= ctr.photographer.role%></b><br>
                   <label>SĐT: </label><b><%= ctr.photographer.phone%></b><br>
                 </div>
               </div>
