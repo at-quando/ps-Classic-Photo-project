@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419074626) do
+ActiveRecord::Schema.define(version: 20180426031616) do
 
   create_table "accessories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20180419074626) do
     t.text "raw"
     t.string "sign"
     t.date "taken_date_2"
+    t.boolean "paid", default: false
     t.index ["price_id"], name: "index_contracts_on_price_id"
   end
 

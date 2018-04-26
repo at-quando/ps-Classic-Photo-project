@@ -14,7 +14,7 @@ ActiveAdmin.register Plu do
 
   form(:html => { :multipart => true }) do |f|
     f.inputs 'Article' do
-      f.input :contract_id, :as => :select, :collection => Contract.all.map{|u| ["#{u.group}, #{u.school}, #{u.school_year}", u.id]}
+      f.input :contract_id, :as => :select, :collection => Contract.where.not(paid: 1).map{|u| ["#{u.taken_date} -> #{u.group}, #{u.school}, #{u.school_year}", u.id]}
       f.input :content
       f.input :quantity
       f.input :price

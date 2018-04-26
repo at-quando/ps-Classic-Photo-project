@@ -22,7 +22,7 @@
           <h5>Bên B</h5>
           <label>Họ và Tên: </label><b><%= @contract.name %></b><br>
           <label>Đại diện của Lớp - Trường: </label><b><%= @contract.group %> - <%= @contract.school %></b><br>
-          <label>SĐT: </label><b><%= @contract.phone %></b><br>
+          <label>SĐT: </label><b><a href="tel:<%= @contract.phone %>"><%= @contract.phone %></a></b><br>
           <label>Sĩ số lớp: </label><b><%= @contract.num_pp %></b><br>
         </div>
       </div>

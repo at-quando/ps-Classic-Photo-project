@@ -20,7 +20,7 @@
               <td>
                 <% values.each do |val| %>
                   ~ <%= val.group %> - <%= val.school %>
-                  <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
+                  <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}", target: "_blank") %>
                   <br>
                 <% end %>
               </td>

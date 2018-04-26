@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :school, :school_year, :address, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :typeFile], carts_attributes: [:accessory_id, :cloth_id, :quantity]
+  permit_params :name, :phone, :paid, :school, :school_year, :address, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :typeFile], carts_attributes: [:accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -21,6 +21,9 @@ ActiveAdmin.register Contract do
     column :taken_date
     column :taken_date_2
     column :code
+    column(:paid) do |check| 
+      check.paid? ? status_tag( "yes", :ok ) : status_tag( "no" )
+    end
     column :school
     column :school_year
     column 'Link Contract' do |member|
@@ -59,6 +62,7 @@ ActiveAdmin.register Contract do
       f.input :prepare
       f.input :gift
       f.input :code
+      f.input :paid
     end
     unless !f.object.new_record?
       f.has_many :contract_plans do |plan|
