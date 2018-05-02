@@ -19,7 +19,12 @@
               <td><%=values.length%></td>
               <td>
                 <% values.each do |val| %>
-                  ~ <%= val.group %> - <%= val.school %>
+                <% if val.paid%>
+                  <span style="color: green">
+                <% else %>
+                  <span>
+                <% end %>
+                  ~ <%= val.group %> - <%= val.school %></span>
                   <% val.package.split(',').each do |id|
                     pack = Package.find(id)
                     if pack %>
