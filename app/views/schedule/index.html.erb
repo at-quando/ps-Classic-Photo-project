@@ -20,6 +20,14 @@
               <td>
                 <% values.each do |val| %>
                   ~ <%= val.group %> - <%= val.school %>
+                  <% val.package.split(',').each do |id|
+                    pack = Package.find(id)
+                    if pack %>
+                      <span style="color: #a14617">
+                      <%= '-' + pack.name %>
+                      </span>
+                    <% end
+                  end %>
                   <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}", target: "_blank") %>
                   <br>
                 <% end %>

@@ -8,6 +8,15 @@
         <% if @contract.code === @code %>
           <h5>Mã code hoá đơn:  <b style="text-transform: uppercase"> <%= @contract.code %></b></h5>
         <% end %>
+        <h5>Tình trạng:
+          <% if @contract.paid == 0 %> 
+            <b style="text-transform: uppercase; color: red"> Chưa thanh toán</b>
+          <% else %>
+            <b style="text-transform: uppercase; color: green"> Đã thanh toán</b>
+          <% end %>
+        </h5>
+        <% linkUpdate = '/admin/contracts/' + @contract.id.to_s + '/edit'%>
+        <a class="btn" href="<%= linkUpdate %>">Cập nhật</a>
       </div>
       <hr>
       <div class="row">
