@@ -9,10 +9,10 @@
           <h5>Mã code hoá đơn:  <b style="text-transform: uppercase"> <%= @contract.code %></b></h5>
         <% end %>
         <h5>Tình trạng:
-          <% if @contract.paid == 0 %> 
-            <b style="text-transform: uppercase; color: red"> Chưa thanh toán</b>
+          <% if @contract.paid %> 
+            <b style="text-transform: uppercase; color: red">Đã thanh toán </b>
           <% else %>
-            <b style="text-transform: uppercase; color: green"> Đã thanh toán</b>
+            <b style="text-transform: uppercase; color: green">Chưa thanh toán</b>
           <% end %>
         </h5>
         <% linkUpdate = '/admin/contracts/' + @contract.id.to_s + '/edit'%>
