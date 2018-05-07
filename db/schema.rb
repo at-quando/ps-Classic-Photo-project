@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426045645) do
+ActiveRecord::Schema.define(version: 20180507040710) do
 
   create_table "accessories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180426045645) do
     t.float "salary", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "finishImages", default: false
     t.index ["contract_id"], name: "index_contract_photographers_on_contract_id"
     t.index ["photographer_id"], name: "index_contract_photographers_on_photographer_id"
   end

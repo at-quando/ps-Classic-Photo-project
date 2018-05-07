@@ -1,5 +1,5 @@
 ActiveAdmin.register ContractPhotographer do
-permit_params :photographer_id, :contract_id, :salary
+permit_params :photographer_id, :contract_id, :salary, :finishImages
 
   index do
     selectable_column
@@ -13,6 +13,9 @@ permit_params :photographer_id, :contract_id, :salary
     column :salary
     column :photographer_id
     column :contract_id
+    column(:finishImages) do |check| 
+      check.finishImages? ? status_tag( "yes", :ok ) : status_tag( "no" )
+    end
     actions
   end
 
@@ -20,6 +23,7 @@ permit_params :photographer_id, :contract_id, :salary
     f.input :photographer_id, :as => :select, :collection => Photographer.all.map{|u| ["#{u.name}, #{u.phone}", u.id]}
     f.input :contract_id, :as => :select, :collection => Contract.where.not(paid: 1).map{|u| ["#{u.taken_date} -> #{u.group}, #{u.school}, #{u.school_year}", u.id]}
     f.input :salary
+    f.input :finishImages
 
     f.actions
   end
