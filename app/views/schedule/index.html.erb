@@ -34,6 +34,14 @@
                     <% end
                   end %>
                   <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}", target: "_blank") %>
+                  <% photoImages = ContractPhotographer.where(contract_id: val.id).map{|x| [x.photographer.name, x.finishImages]} %>
+                  <% photoImages.each do |photoImage| %>
+                    <% if photoImage[1] %>
+                      <span style="color: green">  { <%= photoImage[0]%> }  </span>
+                    <% else %>
+                      <span style="color: red">  { <%= photoImage[0]%> }  </span>
+                    <% end %>
+                  <% end %>
                   <br>
                 <% end %>
               </td>
