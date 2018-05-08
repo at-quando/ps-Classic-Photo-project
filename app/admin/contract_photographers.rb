@@ -21,7 +21,7 @@ permit_params :photographer_id, :contract_id, :salary, :finishImages
 
   form(:html => { :multipart => true }) do |f|
     f.input :photographer_id, :as => :select, :collection => Photographer.all.map{|u| ["#{u.name}, #{u.phone}", u.id]}
-    f.input :contract_id, :as => :select, :collection => Contract.where.not(paid: 1).map{|u| ["#{u.taken_date} -> #{u.group}, #{u.school}, #{u.school_year}", u.id]}
+    f.input :contract_id, :as => :select, :collection => Contract.all.order(taken_date: :desc).map{|u| ["#{u.taken_date} -> #{u.group}, #{u.school}, #{u.school_year}", u.id]}
     f.input :salary
     f.input :finishImages
 
