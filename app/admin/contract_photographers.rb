@@ -29,7 +29,7 @@ permit_params :photographer_id, :contract_id, :salary, :finishImages, :paid, :no
     f.input :contract_id, :as => :select, :collection => Contract.all.order(taken_date: :desc).map{|u| ["#{u.taken_date} -> #{u.group}, #{u.school}, #{u.school_year}", u.id]}
     f.inputs "Infor" do 
       f.input :salary
-      f.input :role
+      f.input :role, :as => :select, :collection => [["Support"], ["Leader"], ["Camera Man"], ["Other"]]
       f.input :note
     end
     f.inputs "Images" do 
