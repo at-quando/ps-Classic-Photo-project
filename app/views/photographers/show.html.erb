@@ -22,6 +22,7 @@
               <th>Lương</th>
               <th>Ghi chú</th>
               <th>Thanh toán</th>
+              <th>Edit</th>
             </tr>
                <% @shows.each do |p|%>
               <tr>
@@ -58,6 +59,8 @@
                   <% if @check %>
                     <td style="color: red">
                       <%= link_to "Paid?", photographer_path(p.id), method: :put, class: 'paginate active-pag' %>
+                    </td>
+                    <td style="color: red">
                       <%= link_to "Edit?", edit_admin_contract_photographer_path(p.id), method: :put, class: 'paginate active-pag' %>
                     </td>
                   <% end%>
