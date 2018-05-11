@@ -58,6 +58,7 @@
                   <% if @check %>
                     <td style="color: red">
                       <%= link_to "Paid?", photographer_path(p.id), method: :put, class: 'paginate active-pag' %>
+                      <%= link_to "Edit?", edit_admin_contract_photographer_path(p.id), method: :put, class: 'paginate active-pag' %>
                     </td>
                   <% end%>
                 <% end%>

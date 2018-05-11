@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :cloths
   resources :accessories
   resources :google, only: [:index, :create]
-  resources :photographers, only: [:index, :show, :update]
+  resources :photographers, only: [:index, :show, :update, :edit]
+  resources :contract_photographers, only: [:edit]
   resources :signatures, only: [:index, :create]
   resources :schedule, only: [:index]
   resources :raws, only: [:show, :create, :index]
