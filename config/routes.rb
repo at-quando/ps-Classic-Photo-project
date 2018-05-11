@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   resources :cloths
   resources :accessories
   resources :google, only: [:index, :create]
+  resources :photographers, only: [:index, :show, :update]
   resources :signatures, only: [:index, :create]
   resources :schedule, only: [:index]
   resources :raws, only: [:show, :create, :index]
+  put 'photographers/:id/payall' => 'photographers#payall', :as => :payall_photo
   get '/articles/:id/:title' => 'articles#show', :as => :article_with_title
   get '/posing' => 'articles#index', :as => :article_posing
   get '/concept' => 'articles#index', :as => :article_concept

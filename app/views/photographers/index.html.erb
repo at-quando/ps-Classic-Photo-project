@@ -1,0 +1,23 @@
+<section class="md-section" id="id-8">
+  <div class="row" style="padding: 0 2rem">
+    <div class="container">
+      <h3>Danh sách thợ</h3>
+      <table>
+        <tr>
+          <th>Tên</th>
+          <th>Số show đã nhận</th>
+          <th>Số show cần thanh toán</th>
+        </tr>
+        <% @photographers.each do |p| %>
+          <tr>
+            <td>
+              <a href="/photographers/<%=p.id%>">
+                <%=p.name%>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</section>

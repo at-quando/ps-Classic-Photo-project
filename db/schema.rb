@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507040710) do
+ActiveRecord::Schema.define(version: 20180511072848) do
 
   create_table "accessories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20180507040710) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "admin_secrets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "token_secret"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -91,6 +97,9 @@ ActiveRecord::Schema.define(version: 20180507040710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "finishImages", default: false
+    t.string "note"
+    t.boolean "paid", default: false
+    t.string "role"
     t.index ["contract_id"], name: "index_contract_photographers_on_contract_id"
     t.index ["photographer_id"], name: "index_contract_photographers_on_photographer_id"
   end

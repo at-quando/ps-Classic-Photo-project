@@ -33,7 +33,9 @@
                       </span>
                     <% end
                   end %>
-                  <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}", target: "_blank") %>
+                  <% if @check == true %>
+                    <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}", target: "_blank") %>
+                  <% end %>
                   <% photoImages = ContractPhotographer.where(contract_id: val.id).map{|x| [x.photographer.name, x.finishImages]} %>
                   <% photoImages.each do |photoImage| %>
                     <% if photoImage[1] %>
@@ -70,7 +72,9 @@
               <td>
                 <% values.each do |val| %>
                   ~ <%= val.group %> - <%= val.school %>
-                  <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
+                  <% if @check == true %>
+                    <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
+                  <% end %>
                   <br>
                 <% end %>
               </td>

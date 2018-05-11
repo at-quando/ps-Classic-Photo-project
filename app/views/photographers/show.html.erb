@@ -1,0 +1,82 @@
+<section class="md-section" id="id-8">
+  <div class="row" style="padding: 0 2rem">
+    <div class="container">
+      <h3><%=@photographer.name%></h3>
+      <div class="row">
+        <div class="col-md-3">
+          <img src="<%=@photographer.avatar%>">
+          <div>
+            <label>Họ và Tên: </label><b><%=@photographer.name %></b><br>
+            <label>Vai trò: </label><b><%=@photographer.role%></b><br>
+            <label>SĐT: </label><b><%=@photographer.phone%></b><br>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <h4>Tính Lương</h4>
+          <table>
+            <tr>
+              <th>Ngày</th>
+              <th>Lớp - trường</th>
+              <th>Gói mở rộng</th>
+              <th>Vai trò</th>
+              <th>Lương</th>
+              <th>Ghi chú</th>
+              <th>Thanh toán</th>
+            </tr>
+               <% @shows.each do |p|%>
+              <tr>
+                <td>
+                  <%=p.contract.taken_date%>
+                </td>
+                <td>
+                  <%=p.contract.group%> - <%=p.contract.school%>
+                </td>
+                <td>
+                  <% p.contract.package.split(',').each do |id|
+                    pack = Package.find(id)
+                    if pack %>
+                      <span style="color: #a14617">
+                      <%= '-' + pack.name %>
+                      </span>
+                    <% end
+                  end %>
+                </td>
+                <td>
+                  <%= p.role %>
+                </td>
+                <td>
+                  <%= convert_money(p.salary) %>
+                </td>
+                <td>
+                  <%= p.note %>
+                </td>
+                <% if p.paid %>
+                  <td style="color: green">
+                    Done
+                  </td>
+                <% else %>
+                  <% if @check %>
+                    <td style="color: red">
+                      <%= link_to "Paid?", photographer_path(p.id), method: :put, class: 'paginate active-pag' %>
+                    </td>
+                  <% end%>
+                <% end%>
+              </tr>
+            <% end %>
+          </table>
+          <span>Tổng tiền</span>
+          <% if @shows.length == 0%>
+            <h4>0</h4> 
+          <% elsif @shows.length == 1%>
+            <h4><%=convert_money(@shows[0].salary)%></h4> 
+          <% else %>
+            <h4><%=convert_money(@shows.map{|x| x.salary}.inject(:+))%></h4>
+          <% end %>
+          <% if @check %>
+            <%= link_to "Pay all", payall_photo_path(@photographer), method: :put, class: 'paginate', data: {confirm: "Are you sure?"} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

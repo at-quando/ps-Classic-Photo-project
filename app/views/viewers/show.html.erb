@@ -15,6 +15,7 @@
     </div>
     <% id = @page.to_i - 1 %>
     <% picture = @view.viewers.first.pictures.where(folder: @link[id])[0]%>
+    <p style="margin: 0 auto">Thư mục này có <b><%=picture.pictureId.split(',').length%></b> tấm</p>
     <div class="container">
       <div class="col-sm-12">
         <div class="grid-css grid-css--grid" data-col-lg="6" data-col-md="6" data-col-sm="6" data-col-xs="1" data-gap="30">

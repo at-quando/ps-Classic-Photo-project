@@ -10,6 +10,13 @@ ActiveAdmin.register Photographer do
     column :role
     column :description
     column :phone
+    column 'Normal Link' do |member|
+      link_to("link", "../photographers/#{member.id}").html_safe
+    end
+    column 'Admin Link' do |member|
+      token = AdminSecret.find(1)
+      link_to("link", "../photographers/#{member.id}?token=#{token.token_secret}").html_safe
+    end
     column :address
     column(:favorite) do |check| 
       check.favorite? ? status_tag( "yes", :ok ) : status_tag( "no" )
