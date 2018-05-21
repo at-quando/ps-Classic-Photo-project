@@ -84,13 +84,13 @@ ActiveAdmin.register Contract do
           car.input :quantity
         end
       end
-    end
-    f.has_many :viewers do |view|
-      view.inputs 'View', :multipart => true do 
-        view.input :email
-        view.input :pwd
-        view.input :drive_link
-        view.input :typeFile
+      f.has_many :viewers do |view|
+        view.inputs 'View', :multipart => true do 
+          view.input :email
+          view.input :pwd
+          view.input :drive_link
+          view.input :typeFile
+        end
       end
     end
     f.actions
