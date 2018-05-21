@@ -24,7 +24,12 @@
                 <% else %>
                   <span>
                 <% end %>
-                  ~ <%= val.group %> - <%= val.school %></span>
+                  <% if val.photoshop %>
+                    ❂
+                  <% else %>
+                    ~
+                  <% end %>
+                  <%= val.group %> - <%= val.school %></span>
                   <% val.package.split(',').each do |id|
                     pack = Package.find(id)
                     if pack %>
