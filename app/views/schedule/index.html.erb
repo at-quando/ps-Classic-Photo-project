@@ -71,7 +71,12 @@
               <td><%=values.length%></td>
               <td>
                 <% values.each do |val| %>
-                  ~ <%= val.group %> - <%= val.school %>
+                  <% if val.photoshop %>
+                    ❂
+                  <% else %>
+                    ~
+                  <% end %>
+                  <%= val.group %> - <%= val.school %>
                   <% if @check == true %>
                     <%= link_to("link", "../contracts/#{val.id}?code=#{val.code}") %>
                   <% end %>
