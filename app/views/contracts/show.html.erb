@@ -15,6 +15,15 @@
             <b style="text-transform: uppercase; color: red">Chưa thanh toán</b>
           <% end %>
         </h5>
+        <h5>Ảnh:
+          <% if @contract.photoshop %> 
+            <b style="text-transform: uppercase; color: green">Đã giao</b>
+            <% linkImage = '/viewers/' + @contract.code.to_s %>
+            <a class="btn" href="<%= linkImage %>">link ảnh</a>
+          <% else %>
+            <b style="text-transform: uppercase; color: red">Chưa giao</b>
+          <% end %>
+        </h5>
         <% linkUpdate = '/admin/contracts/' + @contract.id.to_s + '/edit'%>
         <a class="btn" href="<%= linkUpdate %>">Cập nhật</a>
       </div>
