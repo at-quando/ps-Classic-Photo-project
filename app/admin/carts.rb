@@ -19,7 +19,7 @@ ActiveAdmin.register Cart do
 
   form(:html => { :multipart => true }) do |f|
     f.inputs 'Plus' do
-      f.input :contract_id, :as => :select, :collection => Contract.where.not(paid: 1).map{|u| ["#{u.taken_date} -> #{u.group}, #{u.school}, #{u.school_year}", u.id]}
+      f.input :contract_id, :as => :select, :collection => Contract.all.map{|u| ["#{u.taken_date} -> #{u.group}, #{u.school}, #{u.school_year}", u.id]}
       f.input :accessory_id, :as => :select, :collection => Accessory.all.map{|u| ["#{u.name}, #{u.price}", u.id]}
       f.input :cloth_id, :as => :select, :collection => Cloth.all.map{|u| ["#{u.name}, #{u.hire}", u.id]}
       f.input :quantity

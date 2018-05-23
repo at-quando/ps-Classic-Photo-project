@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :paid, :school, :school_year, :address, :photoshop, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:quater, :costume, :place, :prepare], viewers_attributes: [:email, :pwd, :drive_link, :typeFile], carts_attributes: [:accessory_id, :cloth_id, :quantity]
+  permit_params :name, :phone, :paid, :school, :school_year, :address, :photoshop, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:id, :quater, :costume, :place, :prepare], viewers_attributes: [:id, :email, :pwd, :drive_link, :typeFile], carts_attributes: [:id, :accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -68,29 +68,27 @@ ActiveAdmin.register Contract do
       f.input :paid
       f.input :photoshop
     end
-    unless !f.object.new_record?
-      f.has_many :contract_plans do |plan|
-        plan.inputs 'Plan', :multipart => true do 
-          plan.input :quater
-          plan.input :costume
-          plan.input :place
-          plan.input :prepare
-        end
+    f.has_many :contract_plans do |plan|
+      plan.inputs 'Plan', :multipart => true do 
+        plan.input :quater
+        plan.input :costume
+        plan.input :place
+        plan.input :prepare
       end
-      f.has_many :carts do |car|
-        car.inputs 'Cart', :multipart => true do 
-          car.input :accessory_id, :as => :select, :collection => Accessory.all.map{|u| ["#{u.name}, #{u.price}", u.id]}
-          car.input :cloth_id, :as => :select, :collection => Cloth.all.map{|v| ["#{v.name}, #{v.hire}", v.id]}
-          car.input :quantity
-        end
+    end
+    f.has_many :carts do |car|
+      car.inputs 'Cart', :multipart => true do 
+        car.input :accessory_id, :as => :select, :collection => Accessory.all.map{|u| ["#{u.name}, #{u.price}", u.id]}
+        car.input :cloth_id, :as => :select, :collection => Cloth.all.map{|v| ["#{v.name}, #{v.hire}", v.id]}
+        car.input :quantity
       end
-      f.has_many :viewers do |view|
-        view.inputs 'View', :multipart => true do 
-          view.input :email
-          view.input :pwd
-          view.input :drive_link
-          view.input :typeFile
-        end
+    end
+    f.has_many :viewers do |view|
+      view.inputs 'View', :multipart => true do 
+        view.input :email
+        view.input :pwd
+        view.input :drive_link
+        view.input :typeFile
       end
     end
     f.actions
