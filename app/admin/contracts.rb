@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :paid, :school, :school_year, :address, :photoshop, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, contract_plans_attributes: [:id, :quater, :costume, :place, :prepare], viewers_attributes: [:id, :email, :pwd, :drive_link, :typeFile], carts_attributes: [:id, :accessory_id, :cloth_id, :quantity]
+  permit_params :name, :phone, :paid, :school, :school_year, :address, :photoshop, :video, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, plus_attributes: [:id, :content, :quantity, :total], contract_photographers_attributes: [:id, :contract_id , :photographer_id, :salary, :role, :note, :finishImages, :paid], contract_plans_attributes: [:id, :quater, :costume, :place, :prepare], viewers_attributes: [:id, :email, :pwd, :drive_link, :typeFile], carts_attributes: [:id, :accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -26,6 +26,9 @@ ActiveAdmin.register Contract do
     end
     column(:photoshop) do |check| 
       check.photoshop? ? status_tag( "yes", :ok ) : status_tag( "no" )
+    end
+    column(:video) do |check| 
+      check.video? ? status_tag( "yes", :ok ) : status_tag( "no" )
     end
     column :school
     column :school_year
@@ -67,6 +70,7 @@ ActiveAdmin.register Contract do
       f.input :code
       f.input :paid
       f.input :photoshop
+      f.input :video
     end
     f.has_many :contract_plans do |plan|
       plan.inputs 'Plan', :multipart => true do 
@@ -81,6 +85,24 @@ ActiveAdmin.register Contract do
         car.input :accessory_id, :as => :select, :collection => Accessory.all.map{|u| ["#{u.name}, #{u.price}", u.id]}
         car.input :cloth_id, :as => :select, :collection => Cloth.all.map{|v| ["#{v.name}, #{v.hire}", v.id]}
         car.input :quantity
+      end
+    end
+    f.has_many :plus do |plu|
+      plu.inputs 'Plus', :multipart => true do 
+        plu.input :content
+        plu.input :quantity
+        plu.input :price
+        plu.input :total
+      end
+    end
+    f.has_many :contract_photographers do |co|
+      co.inputs 'Photographer', :multipart => true do 
+        co.input :photographer_id, :as => :select, :collection => Photographer.all.map{|u| ["#{u.name}, #{u.phone}", u.id]}
+        co.input :salary
+        co.input :role, :as => :select, :collection => [["Support"], ["Leader"], ["Camera Man"], ["Other"]]
+        co.input :note
+        co.input :finishImages
+        co.input :paid
       end
     end
     f.has_many :viewers do |view|

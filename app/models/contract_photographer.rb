@@ -1,4 +1,4 @@
 class ContractPhotographer < ApplicationRecord
-  belongs_to :contract
-  belongs_to :photographer
+  belongs_to :contract, optional: true
+  belongs_to :photographer, optional: true
 end

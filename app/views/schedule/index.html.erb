@@ -29,6 +29,13 @@
                   <% else %>
                     ~
                   <% end %>
+                  <% if val.package.split(',').include?('3') || val.package.split(',').include?('2') || val.package.split(',').include?('4')%>
+                    <% if val.video %>
+                      ✇
+                    <% else %>
+                      ~
+                    <% end %>
+                  <% end %>
                   <%= val.group %> - <%= val.school %></span>
                   <% val.package.split(',').each do |id|
                     pack = Package.find(id)
@@ -80,6 +87,13 @@
                     ❂
                   <% else %>
                     ~
+                  <% end %>
+                  <% if val.package.split(',').include?('3') || val.package.split(',').include?('2') || val.package.split(',').include?('4')%>
+                    <% if val.video %>
+                      ✇
+                    <% else %>
+                      ~
+                    <% end %>
                   <% end %>
                   <%= val.group %> - <%= val.school %>
                   <% if @check == true %>
