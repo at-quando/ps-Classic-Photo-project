@@ -12,16 +12,16 @@ class PhotographersController < ApplicationController
       params = CGI.parse(uri.query)
       @status  = params['status'].first
       if @status == "unpaid"
-        @shows = @photographer.contract_photographers.where(paid: false)
+        @shows = @photographer.contract_photographers.where(paid: false).joins(:contract).order('contracts.taken_date DESC')
       else
-        @shows = @photographer.contract_photographers
+        @shows = @photographer.contract_photographers.joins(:contract).order('contracts.taken_date DESC')
       end
       token  = params['token'].first
       if AdminSecret.find_by(token_secret: token)
         @check = true
       end
     else
-      @shows = @photographer.contract_photographers
+      @shows = @photographer.contract_photographers.joins(:contract).order('contracts.taken_date DESC')
     end
   end
 
@@ -30,7 +30,7 @@ class PhotographersController < ApplicationController
     if !@photographer.paid
       @photographer.update_attributes(paid: true)
     end
-    redirect_to photographer_path(@photographer.photographer_id)
+    redirect_to request.referrer, notice: "You're being redirected"
   end
 
   def payall
@@ -40,6 +40,6 @@ class PhotographersController < ApplicationController
         pay.update_attributes(paid: true)
       end
     end
-    redirect_to photographer_path(params[:id])
+    redirect_to request.referrer, notice: "You're being redirected"
   end
 end
