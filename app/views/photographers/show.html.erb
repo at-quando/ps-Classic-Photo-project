@@ -61,7 +61,7 @@
                       <%= link_to "Paid?", photographer_path(p.id), method: :put, class: 'paginate active-pag' %>
                     </td>
                     <td style="color: red">
-                      <%= link_to "Edit?", edit_admin_contract_photographer_path(p.id), method: :put, class: 'paginate active-pag', target: "_blank" %>
+                      <%= link_to "Edit?", edit_admin_contract_photographer_path(p.id), class: 'paginate active-pag', target: "_blank" %>
                     </td>
                   <% end%>
                 <% end%>
