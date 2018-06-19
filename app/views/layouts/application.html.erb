@@ -11,6 +11,15 @@
     <link rel="shortcut icon" type="image/x-icon" href="/img/logo-only.png" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
   </head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121046366-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-121046366-1');
+  </script>
   <body>
     <% if request.path != '/home'%>
       <header class="header--fixed header" style="top :0">
