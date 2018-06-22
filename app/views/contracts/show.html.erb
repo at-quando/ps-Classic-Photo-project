@@ -39,9 +39,9 @@
         <div class="col-md-6 center-head">
           <h5>Bên B</h5>
           <label>Họ và Tên: </label><b><%= @contract.name %></b><br>
-          <label>Đại diện của Lớp - Trường: </label><b><%= @contract.group %> - <%= @contract.school %></b><br>
+          <label>Đại diện của: </label><b><%= @contract.group %> - <%= @contract.school %></b><br>
           <label>SĐT: </label><b><a href="tel:<%= @contract.phone %>"><%= @contract.phone %></a></b><br>
-          <label>Sĩ số lớp: </label><b><%= @contract.num_pp %></b><br>
+          <label>Số lượng thành viên: </label><b><%= @contract.num_pp %></b><br>
         </div>
       </div>
       <hr>
@@ -49,7 +49,7 @@
         <div class="col-md-6">
           <div style="padding-left: 3rem;">
             <h3 class="center-head">Nội dung hợp đồng</h3>
-            <label>Ngày chụp: </label><b><%= @contract.taken_date %></b><br>
+            <label>Ngày quay chụp: </label><b><%= @contract.taken_date %></b><br>
             <% if @contract.taken_date_2 %>
               <label>Ngày chụp phụ: </label><b><%= @contract.taken_date_2 %></b><br>
             <% end %>
@@ -118,7 +118,7 @@
       </div>
       <hr>
       <div class="center-head">
-        <h3>Thông tin thợ chụp</h3>
+        <h3>Thông tin thợ chụp và quay</h3>
         <ul>
           <% @ctr_photo.each do |ctr|%>
             <li class="photo-item">
@@ -136,35 +136,36 @@
       </div>
       <hr>
       <h3 class="center-head">Các điều khoản cơ bản</h3>
-      <div class="col-lg-4">
-          <div class="contact">
-            <h5 class="contact__title">Lợi ích cho gói chụp cơ bản</h5>
-            <p>★ Thời gian chụp từ <b>8h - 17h</b></p>
-            <p>★ Không giới hạn ảnh chụp.</p>
-            <p>★ Dời lịch chụp nếu trời mưa.</p>
-            <p>★ Không giới hạn địa điểm chụp.</p>
-            <p>★ Edit photoshop 100% ảnh gốc.</p>
-            <p>★ Design ảnh bìa và lên layout.</p>
-            <p>★ Ekip nhiệt tình và thường xuyên cập nhật xu hướng mới.</p>
-            <p>★ Khâu chuẩn bị và lên KỊCH BẢN chuyên nghiệp giữa 2 bên.</p>
-            <p>★ Được hỗ trợ giá từ các tiệm thuê đồ trên toàn Đà Nẵng.</p>
-            <p>★ Mỗi bộ ảnh, chúng tôi đều nắm bắt những KHOẢNH KHẮC nhỏ nhất.</p>
-          </div><!-- End / contact -->
-        </div>
+      <% if @contract.type == 0 %>
         <div class="col-lg-4">
-          <div class="contact">
-            <h5 class="contact__title">Lợi ích mở rộng gói chụp</h5>
-            <h5>- Gói chụp đêm</h5>
-            <p>★ Thời gian chụp từ <b>18h - 20h30</b></p>
-            <p>★ Team sẽ <b>chuẩn bị máy nổ</b> (ở những nơi ko có điện).</p>
-            <p>★ Team sẽ <b>chuẩn bị đèn dây tóc trang trí</b>.</p>
-            <p>★ Team có rất nhiều <b>kinh nghiệm trong việc hỗ trợ setup khung cảnh.</b></p>
-            <p>★ Team có thể <b>kiểm soát ánh sáng nhân tạo.</b></p>
-            <h5>- Gói chụp phát sinh thêm ngày hoặc khung giờ không thuộc 8h-20h30</h5>
-            <p>★ Liên hệ để biết thêm chi tiết</p>
-          </div><!-- End / contact -->
-        </div>
-        <div class="col-lg-4">
+            <div class="contact">
+              <h5 class="contact__title">Lợi ích cho gói chụp cơ bản</h5>
+              <p>★ Thời gian chụp từ <b>8h - 17h</b></p>
+              <p>★ Không giới hạn ảnh chụp.</p>
+              <p>★ Dời lịch chụp nếu trời mưa.</p>
+              <p>★ Không giới hạn địa điểm chụp.</p>
+              <p>★ Edit photoshop 100% ảnh gốc.</p>
+              <p>★ Design ảnh bìa và lên layout.</p>
+              <p>★ Ekip nhiệt tình và thường xuyên cập nhật xu hướng mới.</p>
+              <p>★ Khâu chuẩn bị và lên KỊCH BẢN chuyên nghiệp giữa 2 bên.</p>
+              <p>★ Được hỗ trợ giá từ các tiệm thuê đồ trên toàn Đà Nẵng.</p>
+              <p>★ Mỗi bộ ảnh, chúng tôi đều nắm bắt những KHOẢNH KHẮC nhỏ nhất.</p>
+            </div><!-- End / contact -->
+          </div>
+          <div class="col-lg-4">
+            <div class="contact">
+              <h5 class="contact__title">Lợi ích mở rộng gói chụp</h5>
+              <h5>- Gói chụp đêm</h5>
+              <p>★ Thời gian chụp từ <b>18h - 20h30</b></p>
+              <p>★ Team sẽ <b>chuẩn bị máy nổ</b> (ở những nơi ko có điện).</p>
+              <p>★ Team sẽ <b>chuẩn bị đèn dây tóc trang trí</b>.</p>
+              <p>★ Team có rất nhiều <b>kinh nghiệm trong việc hỗ trợ setup khung cảnh.</b></p>
+              <p>★ Team có thể <b>kiểm soát ánh sáng nhân tạo.</b></p>
+              <h5>- Gói chụp phát sinh thêm ngày hoặc khung giờ không thuộc 8h-20h30</h5>
+              <p>★ Liên hệ để biết thêm chi tiết</p>
+            </div><!-- End / contact -->
+          </div>
+          <div class="col-lg-4">
             <div class="contact">
               <h5 class="contact__title">Lợi ích cho gói video</h5>
               <h5>- Tất cả gói video đều:</h5>
@@ -184,6 +185,40 @@
               <p>★ Độ dài từ <b>7-10 phút.</b></p>
             </div><!-- End / contact -->
           </div>
+        <% elsif @contract.type == 1 %>
+            <div class="col-lg-4">
+            <div class="contact">
+              <h5 class="contact__title">Lợi ích cho gói chụp event - team building</h5>
+              <p>★ Chụp xuyên suốt thời gian diễn ra event.</b></p>
+              <p>★ Không giới hạn ảnh chụp.</p>
+              <p>★ Edit photoshop 100% ảnh gốc.</p>
+              <p>★ Design ảnh bìa.</p>
+              <p>★ Ekip nhiệt tình và thường xuyên cập nhật xu hướng mới.</p>
+              <p>★ Khâu chuẩn bị và lên KỊCH BẢN chuyên nghiệp giữa 2 bên.</p>
+              <p>★ Mỗi bộ ảnh, chúng tôi đều nắm bắt những KHOẢNH KHẮC nhỏ nhất.</p>
+            </div><!-- End / contact -->
+          </div>
+          <div class="col-lg-4">
+            <div class="contact">
+              <h5 class="contact__title">Lợi ích cho gói quay event - team building</h5>
+              <p>★ <b>Clip sản phẩm dài 5p trở lên</b></p>
+              <p>★ Quay xuyên suốt trong quá trình diễn ra sự kiện - team building.</p>
+              <p>★ Đảm bảo đầy đủ nội dung chương trình.</p>
+              <p>★ Đảm bảo các kỹ thuật quay phim chuyên nghiệp.</p>
+              <p>★ Đảm bảo <b>màu sắc cinematic, chất lượng và độ nét đạt chuẩn Full HD 1920x1080.</b></p>
+              <p>★ Nắm bắt những KHOẢNH KHẮC nhỏ nhất, chân thật nhất.</b></p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="contact">
+              <h5 class="contact__title">Lợi ích cho gói flycam</h5>
+              <p>★ Quay và chụp theo yêu cầu đã thoả thuận trong kịch bản</p>
+              <p>★ Đảm bảo các cảnh quay toàn cảnh chương trình, và những đội hình đặc biệt.</p>
+              <p>★ Đảm bảo chất lượng clip flycam đạt chuẩn FUll HD 1920x1080</p>
+              <p>★ Đảm bảo chất lượng kỹ thuật bay flycam</p>
+            </div><!-- End / contact -->
+          </div>
+        <% end %> 
     </div>
   </div>
 </section>
