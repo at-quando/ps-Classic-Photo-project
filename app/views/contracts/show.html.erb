@@ -56,6 +56,8 @@
             <label>Quà tặng: </label><b><%= @contract.gift %></b><br>
             <% if @contract.code === @code %>
               <label>Gói chụp/quay: </label><b> <%= convert_money(@contract.price.price) %> VND </b><br>
+              <label>Nội dung đầy đủ của gói: </label><br>
+              <%= @contract.prepare %>
               <label>Gói mở rộng: </label><br>
               <% total = @contract.price.price %>
               <% @package.each do |pack|%>
