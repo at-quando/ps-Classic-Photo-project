@@ -11,7 +11,7 @@ ActiveAdmin.register Contract do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :phone, :paid, :type, :school, :school_year, :address, :photoshop, :video, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, plus_attributes: [:id, :content, :quantity, :total], contract_photographers_attributes: [:id, :contract_id , :photographer_id, :salary, :role, :note, :finishImages, :paid], contract_plans_attributes: [:id, :quater, :costume, :place, :prepare], viewers_attributes: [:id, :email, :pwd, :drive_link, :typeFile], carts_attributes: [:id, :accessory_id, :cloth_id, :quantity]
+  permit_params :name, :phone, :paid, :typeContract, :school, :school_year, :address, :photoshop, :video, :town, :group, :taken_date, :taken_date_2, :num_pp, :price_id, :package, :deposit, :prepare, :gift, :code, plus_attributes: [:id, :content, :quantity, :total], contract_photographers_attributes: [:id, :contract_id , :photographer_id, :salary, :role, :note, :finishImages, :paid], contract_plans_attributes: [:id, :quater, :costume, :place, :prepare], viewers_attributes: [:id, :email, :pwd, :drive_link, :typeFile], carts_attributes: [:id, :accessory_id, :cloth_id, :quantity]
 
   index do
     selectable_column
@@ -19,7 +19,7 @@ ActiveAdmin.register Contract do
     column :name
     column :phone
     column :taken_date
-    column :type
+    column :typeContract
     column :taken_date_2
     column :code
     column(:paid) do |check| 
@@ -60,7 +60,7 @@ ActiveAdmin.register Contract do
       f.input :address
       f.input :town
       f.input :group
-      f.input :type
+      f.input :typeContract
       f.input :taken_date
       f.input :taken_date_2
       f.input :num_pp

@@ -136,7 +136,7 @@
       </div>
       <hr>
       <h3 class="center-head">Các điều khoản cơ bản</h3>
-      <% if @contract.type == 0 %>
+      <% if @contract.typeContract == 0 %>
         <div class="col-lg-4">
             <div class="contact">
               <h5 class="contact__title">Lợi ích cho gói chụp cơ bản</h5>
@@ -185,7 +185,7 @@
               <p>★ Độ dài từ <b>7-10 phút.</b></p>
             </div><!-- End / contact -->
           </div>
-        <% elsif @contract.type == 1 %>
+        <% elsif @contract.typeContract == 1 %>
             <div class="col-lg-4">
             <div class="contact">
               <h5 class="contact__title">Lợi ích cho gói chụp event - team building</h5>
