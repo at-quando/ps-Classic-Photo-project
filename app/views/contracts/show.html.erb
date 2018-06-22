@@ -55,7 +55,7 @@
             <% end %>
             <label>Quà tặng: </label><b><%= @contract.gift %></b><br>
             <% if @contract.code === @code %>
-              <label>Gói chụp cơ bản: </label><b> <%= convert_money(@contract.price.price) %> VND </b><br>
+              <label>Gói chụp/quay: </label><b> <%= convert_money(@contract.price.price) %> VND </b><br>
               <label>Gói mở rộng: </label><br>
               <% total = @contract.price.price %>
               <% @package.each do |pack|%>
@@ -85,6 +85,7 @@
         </div>
         <div class="col-md-6 center-head">
           <h3>Kịch bản ngày chụp</h3>
+          <p>Link kịch bản đầy đủ: <%= @contract.scenario%></p>
           <table>
             <tr>
               <th>Thời gian</th>
