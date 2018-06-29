@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   post '/raws/:id/submit' => 'raws#submit', :as => 'submit_raws'
   post "/upload_image" => "upload#upload_image", :as => :upload_image
   get "/download_file/:name" => "upload#access_file", :as => :access_file, :name => /.*/
+
+  get '/api/viewers/:id' => 'viewers#showMobile', :as => :show_viewers_mobile
   get "/" => redirect("/home")
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

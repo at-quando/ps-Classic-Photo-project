@@ -17,6 +17,7 @@ gem 'popper_js', '~> 1.12.9'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'activeadmin_froala_editor'
+gem 'rack-cors', require: 'rack/cors'
 
 # Plus integrations with:
 gem 'devise'
